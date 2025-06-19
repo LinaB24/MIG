@@ -1,0 +1,41 @@
+# Proyecto-mig
+
+## Descripción  
+Sistema POS desarrollado en PHP como parte del curso de Análisis y Diseño de Software.
+
+## Asignación de tareas  
+
+- **Diego (Scrum Master)**  
+  - Configurar Git y definir el flujo de trabajo.  
+  - Crear la estructura HTML del login.  
+  - Revisar y hacer merge de las ramas.  
+  - Crear la pagina principal junto con su css
+
+  - TERMINADO lanzado al main 04/03/2025
+  
+
+- **Arley (Backend)**  
+  - Crear la base de datos y la tabla `usuarios`.  
+  - Desarrollar el sistema de autenticación en PHP.  
+
+- **Dayana (frontend)**  
+  - Diseñar los estilos en CSS.  
+  - Adaptar la interfaz visual del login.
+
+  - TERMINADO lanzado al main 04/03/2025
+  
+## Flujo de trabajo con Git  
+
+1. Cada desarrollador trabajará en su propia rama.  
+2. Al terminar una tarea, deberá hacer un **commit** y un **push**.  
+3. Se solicitará un **pull request** para fusionar los cambios en `develop`.  
+4. Diego revisará y aprobará los cambios antes de integrarlos.  
+
+-------------------------------------------------------------------------------------------------------
+# Proyecto-mig
+
+## Descripción  
+Sistema POS desarrollado en PHP como parte del curso de Análisis y Diseño de Software.
+
+## Asignación de tareas  
+
