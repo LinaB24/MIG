@@ -286,4 +286,10 @@ h3 {
 
 .footer {
     text-align: center;
+    width: 100vw;
+    left: 0;
+    margin-left: calc(-50vw + 50%);
+    background: #f8f9fa; /* color de fondo claro, igual que bg-light */
+    padding: 1rem 0;
+    position: relative;
 }
