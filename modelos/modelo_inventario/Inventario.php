@@ -77,3 +77,4 @@ class Inventario {
         $stmt->close();
     }
 }
+
