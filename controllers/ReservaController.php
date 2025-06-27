@@ -15,16 +15,21 @@ class ReservaController
         $this->modelo = new Reserva();
     }
 
-    public function index() 
+    public function index()
     {
-    $busqueda = $_GET['busqueda'] ?? '';
-    $reservas = $this->modelo->obtenerTodas($busqueda);
-    include 'views/index.php';
-    }
+        $busqueda = $_GET['busqueda'] ?? '';
 
+        require_once 'models/Reserva.php';
+        $reservaModel = new Reserva();
+        $reservaModel->actualizarEstadoMesasPorHorario();
+        $reservaModel->liberarMesasPasadas();
+        $reservas = $this->modelo->obtenerTodas($busqueda);
+        include 'views/index.php';
+    }
 
     public function crear()
     {
+        $this->modelo->actualizarEstadoMesasPorHorario();
         $mesas = $this->modelo->obtenerMesasDisponibles(); // Obtener mesas desde el modelo
         include 'views/crear_reserva.php'; // Enviar a la vista
     }
@@ -52,13 +57,11 @@ class ReservaController
             return;
         }
 
-        $this->modelo->guardar($datos); // Guarda la reserva
-        $this->modelo->actualizarEstadoMesa($datos['mesa_id'], 'Reservada'); // Cambia estado de la mesa
+        $this->modelo->guardar($datos); // Solo guarda la reserva
 
-        $_SESSION['exito'] = "Reserva registrada y mesa asignada correctamente.";
+        $_SESSION['exito'] = "Reserva registrada correctamente.";
         header('Location: index.php?url=reserva/index');
     }
-
 
     public function eliminar()
     {
@@ -71,6 +74,7 @@ class ReservaController
 
     public function editar()
     {
+        $this->modelo->actualizarEstadoMesasPorHorario();
         if (!isset($_GET['id'])) {
             header('Location: index.php?url=reserva/index');
             return;
@@ -116,6 +120,7 @@ class ReservaController
 
     public function dashboard()
     {
+        $this->modelo->actualizarEstadoMesasPorHorario();
         $totalReservasHoy = $this->modelo->contarReservasDeHoy();
         $mesasDisponibles = $this->modelo->contarMesasDisponibles();
         $totalMesas = $this->modelo->contarTodasLasMesas();
@@ -126,11 +131,11 @@ class ReservaController
 
     public function reporteMensual()
     {
-    $mes = $_GET['mes'] ?? date('m');
-    $año = $_GET['anio'] ?? date('Y');
+        $this->modelo->actualizarEstadoMesasPorHorario();
+        $mes = $_GET['mes'] ?? date('m');
+        $año = $_GET['anio'] ?? date('Y');
 
-    $reservas = $this->modelo->obtenerReservasPorMes($mes, $año);
-    include 'views/reporte_mensual.php';
+        $reservas = $this->modelo->obtenerReservasPorMes($mes, $año);
+        include 'views/reporte_mensual.php';
     }
-
 }

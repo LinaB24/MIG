@@ -24,6 +24,7 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Personas</th>
+                        <th>Mesa</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -31,10 +32,11 @@
                     <?php foreach ($reservas as $reserva): ?>
                         <tr>
                             <td><?= $reserva['id'] ?></td>
-                            <td><?= $reserva['nombre'] ?></td>
+                            <td><?= htmlspecialchars($reserva['nombre']) ?></td>
                             <td><?= $reserva['fecha'] ?></td>
                             <td><?= $reserva['hora'] ?></td>
                             <td><?= $reserva['personas'] ?></td>
+                            <td>Mesa<?= htmlspecialchars($reserva['numero_mesa']) ?></td>
                             <td>
                                 <a href="index.php?url=reserva/editar&id=<?= $reserva['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="index.php?url=reserva/eliminar&id=<?= $reserva['id'] ?>"

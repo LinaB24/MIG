@@ -4,7 +4,7 @@
     <div class="card p-4 shadow" style="max-width: 600px; width: 100%;">
         <h3 class="mb-4 text-center">Agregar Reserva</h3>
 
-        <form action="index.php?url=reserva/guardar" method="POST">
+        <form id="formReserva" action="index.php?url=reserva/guardar" method="POST">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre del Cliente</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -30,7 +30,10 @@
                 <select class="form-select" id="mesa_id" name="mesa_id" required>
                     <option value="">Seleccione una mesa</option>
                     <?php foreach ($mesas as $mesa): ?>
-                        <option value="<?= $mesa['MesaID'] ?>"><?= $mesa['Numero'] ?></option>
+                        <option value="<?= htmlspecialchars($mesa['MesaID']) ?>"
+                                data-capacidad="<?= htmlspecialchars($mesa['Capacidad']) ?>">
+                            Mesa <?= htmlspecialchars($mesa['Numero']) ?> - Capacidad: <?= htmlspecialchars($mesa['Capacidad']) ?> personas
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -47,5 +50,25 @@
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+document.getElementById('formReserva').addEventListener('submit', function(e) {
+    var personas = parseInt(document.getElementById('personas').value);
+    var mesaSelect = document.getElementById('mesa_id');
+    var selectedOption = mesaSelect.options[mesaSelect.selectedIndex];
+    var capacidad = parseInt(selectedOption.getAttribute('data-capacidad'));
+
+    if (mesaSelect.value === "") {
+        alert("Por favor seleccione una mesa.");
+        e.preventDefault();
+        return;
+    }
+
+    if (personas > capacidad) {
+        alert("La cantidad de personas excede la capacidad de la mesa seleccionada.");
+        e.preventDefault();
+    }
+});
+</script>
 
 <?php include 'views/footer.php'; ?>
