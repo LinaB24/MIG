@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("../../modelos/modelo_administrador/Administradores.php"); 
@@ -11,11 +10,12 @@ if ($_POST) {
     $Usuario = $_POST["Usuario"];
     $Password = $_POST["Password"];
 
-    $Modelo->add($Nombre, $Apellido, $Usuario, $Password);
+    // Encriptar la contraseña 
+    $PasswordHash = password_hash($Password, PASSWORD_DEFAULT);
+
+    $Modelo->add($Nombre, $Apellido, $Usuario, $PasswordHash);
 
     header("Location: ../../pages/pages_administrador/index.php");
 } else {
     header("Location: ../../pages/pages_administrador/index.php");
 }
-
-?>

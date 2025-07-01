@@ -17,7 +17,8 @@ $Modelo = new Administradores();
     <h1>Administradores</h1>
     <a href="add.php">Registrar Administrador</a><br><br>
     <a href="../pages_empleado/index.php">Ver empleados</a><br><br>
-    <a href="../pages_inventario/index.php">Ir a inventario</a>
+    <a href="../pages_existencias/index.php">Ir a inventario</a>
+    <a href="../pages_pedidos/index.php">Ir a tickets</a>
     <table border="1">
         <tr>
             <th>ID</th>

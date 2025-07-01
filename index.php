@@ -63,7 +63,7 @@
         </form>
 
         <!-- Botón separado -->
-        <a class="nav-link" href="views/login.html">Iniciar sesión</a>
+        <a class="nav-link" href="pages/pages_login/login.php">Iniciar sesión</a>
       </div>
 
     </div>

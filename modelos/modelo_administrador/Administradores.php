@@ -7,6 +7,20 @@ class Administradores {
     public function __construct() {
         $this->db = Conexion::getInstancia()->getConexion();
     }
+    public function login($usuario, $password) {
+    $sql = "SELECT * FROM tb_administradores WHERE USUARIO = ? AND ESTADO = 'Activo'";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$usuario]);
+    $result = $stmt->fetch();
+
+    if ($result && password_verify($password, $result["PASSWORD"])) {
+        $_SESSION["ID"] = $result["ID_USUARIO"];
+        $_SESSION["NOMBRE"] = $result["NOMBRE"];
+        $_SESSION["PERFIL"] = $result["PERFIL"];
+        return true;
+    }
+    return false;
+}
 
     public function add($nombre, $apellido, $usuario, $password) {
         $sql = "INSERT INTO tb_administradores (NOMBRE, APELLIDO, USUARIO, PASSWORD) VALUES (?, ?, ?, ?)";

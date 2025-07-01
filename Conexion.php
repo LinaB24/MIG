@@ -29,5 +29,8 @@ class Conexion {
     public function getConexion() {
         return $this->db;
     }
+
 }
+
+
 ?>

@@ -1,23 +1,25 @@
 <?php
-require_once("../Modelo/Usuarios.php");
-
-$Modelo = new Usuarios();
+require_once("../../modelos/modelo_administrador/Administradores.php");
+session_start();
 
 if ($_POST) {
-    $Usuario = $_POST["Usuario"];
-    $Password = $_POST["Password"];
+    $usuario = $_POST["usuario"] ?? $_POST["Usuario"] ?? '';
+    $password = $_POST["password"] ?? $_POST["Password"] ?? '';
 
-    if ($Modelo->login($Usuario, $Password)) {
-        // Éxito: redirigir al módulo principal
-        header("Location: ../../Administradores/Pages/index.php");
+    $Modelo = new Administradores();
+
+    if ($Modelo->login($usuario, $password)) {
+        header("Location: ../../pages/pages_administrador/index.php");
+        exit;
     } else {
-        // Fallo: mensaje y volver al login
         echo "<script>
                 alert('Usuario o contraseña incorrectos');
-                window.location='../../login.php';
+                window.location='../../pages/pages_login/login.php';
                 </script>";
+        exit;
     }
 } else {
-    header("Location: ../../login.php");
+    header("Location: ../../pages/pages_login/login.php");
+    exit;
 }
 ?>
