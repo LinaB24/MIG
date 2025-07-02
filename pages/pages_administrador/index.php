@@ -16,10 +16,9 @@ $Modelo = new Administradores();
 <body>
     <h1>Administradores</h1>
     <a href="add.php">Registrar Administrador</a><br><br>
-    <a href="../pages_empleado/index.php">Ver empleados</a><br><br>
-    <a href="../pages_existencias/index.php">Ir a inventario</a>
-    <a href="../pages_pedidos/index.php">Ir a tickets</a>
-    <a href="../pages_reservas/index.php">Ir a reservas</a>
+    <a href="../pages_existencias/index.php">Ir a inventario</a><br><br>
+    <a href="../pages_pedidos/index.php">Ir a tickets</a><br><br>
+    <a href="../pages_reservas/index.php">Ir a reservas</a><br><br>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -50,5 +49,8 @@ $Modelo = new Administradores();
         </tr>
         <?php }} ?>
     </table>
+    <button>
+        <a href="../../index.php">cerrar sesion</a>
+    </button>
 </body>
 </html>

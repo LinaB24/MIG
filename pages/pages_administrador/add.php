@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Registrar Administrador</h1>
+    
     <form method="POST" action="../../controladores/controlador_administrador/add.php">
         Nombre: <br><input type="text" name="Nombre" required><br><br>
         Apellido: <br><input type="text" name="Apellido" required><br><br>
@@ -15,5 +16,8 @@
         Password: <br><input type="password" name="Password" required><br><br>
         <input type="submit" value="Registrar">
     </form>
+    <button>
+        <a href="index.php">Volver a la lista de administradores</a>
+    </button>
 </body>
 </html>
