@@ -1,36 +1,31 @@
 <?php
 class Conexion {
-    private static $instancia = null;
+    private static $instancias = [];
     private $db;
 
-    private $driver = "mysql";
-    private $host = "localhost";
-    private $bd = "db_mig_unificada";
-    private $usuario = "root";
-    private $contrasena = "";
+    private function __construct($bd = "db_mig_unificada") {
+        $driver = "mysql";
+        $host = "localhost";
+        $usuario = "root";
+        $contrasena = "";
 
-    private function __construct() {
         try {
-            $this->db = new PDO("{$this->driver}:host={$this->host};dbname={$this->bd}",
-                $this->usuario, $this->contrasena);
+            $this->db = new PDO("$driver:host=$host;dbname=$bd", $usuario, $contrasena);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error de conexión: " . $e->getMessage());
         }
     }
 
-    public static function getInstancia() {
-        if (self::$instancia === null) {
-            self::$instancia = new self();
+    public static function getInstancia($bd = "db_mig_unificada") {
+        if (!isset(self::$instancias[$bd])) {
+            self::$instancias[$bd] = new self($bd);
         }
-        return self::$instancia;
+        return self::$instancias[$bd];
     }
 
     public function getConexion() {
         return $this->db;
     }
-
 }
-
-
 ?>
