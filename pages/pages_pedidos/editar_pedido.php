@@ -38,7 +38,7 @@ include __DIR__ . '/../pages_layout/head.php';
 
         <button type="submit" class="btn btn-primary">Actualizar Pedido</button>
 
-        <a href="../../controllers/pedidosControllers.php?accion=crear" class="btn btn-secondary ms-2">Cancelar</a>
+        <a href="/MIG/pages/pages_pedidos/index.php" class="btn btn-secondary ms-2">Cancelar</a>
 
     </form>
 </div>

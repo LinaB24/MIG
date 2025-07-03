@@ -7,43 +7,37 @@ class Reserva
 
     public function __construct()
     {
-        $this->db = new PDO("mysql:host=localhost;dbname=reservas_admin", "root", "");
+        // Usa la conexión centralizada
+        $this->db = Conexion::getInstancia()->getConexion();
     }
 
     public function obtenerTodas($busqueda = '')
     {
         if (!empty($busqueda)) {
             $stmt = $this->db->prepare("
-            SELECT r.*, m.Numero AS numero_mesa
-            FROM reservas r
-            JOIN mesas m ON r.mesa_id = m.MesaID
-            WHERE r.nombre LIKE ?
-            ORDER BY r.fecha, r.hora
-        ");
+                SELECT r.*, m.Numero AS numero_mesa
+                FROM reservas r
+                JOIN mesas m ON r.mesa_id = m.MesaID
+                WHERE r.nombre LIKE ?
+                ORDER BY r.fecha, r.hora
+            ");
             $stmt->execute(["%$busqueda%"]);
         } else {
             $stmt = $this->db->query("
-            SELECT r.*, m.Numero AS numero_mesa
-            FROM reservas r
-            JOIN mesas m ON r.mesa_id = m.MesaID
-            ORDER BY r.fecha, r.hora
-        ");
+                SELECT r.*, m.Numero AS numero_mesa
+                FROM reservas r
+                JOIN mesas m ON r.mesa_id = m.MesaID
+                ORDER BY r.fecha, r.hora
+            ");
         }
-
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-
-
     public function guardar($data)
     {
-        $conexion = Conexion::conectar();
-
         $sql = "INSERT INTO reservas (nombre, fecha, hora, personas, mesa_id, Estado)
             VALUES (?, ?, ?, ?, ?, 'Pendiente')";
-
-        $stmt = $conexion->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         return $stmt->execute([
             $data['nombre'],
             $data['fecha'],
@@ -52,8 +46,6 @@ class Reserva
             $data['mesa_id']
         ]);
     }
-
-
 
     public function eliminar($id)
     {
@@ -71,7 +63,6 @@ class Reserva
         $stmt->execute([$id]);
     }
 
-
     public function obtenerPorId($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM reservas WHERE id = ?");
@@ -81,12 +72,13 @@ class Reserva
 
     public function actualizar($datos)
     {
-        $stmt = $this->db->prepare("UPDATE reservas SET nombre = ?, fecha = ?, hora = ?, personas = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE reservas SET nombre = ?, fecha = ?, hora = ?, personas = ?, mesa_id = ? WHERE id = ?");
         $stmt->execute([
             $datos['nombre'],
             $datos['fecha'],
             $datos['hora'],
             $datos['personas'],
+            $datos['mesa_id'],
             $datos['id']
         ]);
     }
@@ -125,7 +117,6 @@ class Reserva
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     public function contarMesasDisponibles()
     {
         $stmt = $this->db->query("SELECT COUNT(*) FROM mesas WHERE Estado = 'Disponible'");
@@ -154,9 +145,8 @@ class Reserva
 
     public function actualizarEstadoMesasPorHorario()
     {
-        $conexion = Conexion::conectar();
         $sql = "SELECT * FROM reservas";
-        $stmt = $conexion->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -172,33 +162,30 @@ class Reserva
 
             if ($reserva['Estado'] === 'Pendiente' && $diferencia <= 3600 && $diferencia > 0) {
                 $sqlUpdate = "UPDATE mesas SET Estado = 'Reservada' WHERE MesaID = ?";
-                $stmtUpdate = $conexion->prepare($sqlUpdate);
+                $stmtUpdate = $this->db->prepare($sqlUpdate);
                 $stmtUpdate->execute([$reserva['mesa_id']]);
 
                 $sqlEstado = "UPDATE reservas SET Estado = 'Activa' WHERE id = ?";
-                $stmtEstado = $conexion->prepare($sqlEstado);
+                $stmtEstado = $this->db->prepare($sqlEstado);
                 $stmtEstado->execute([$reserva['id']]);
             }
 
             if ($diferencia <= 0) {
                 $sqlLiberar = "UPDATE mesas SET Estado = 'Disponible' WHERE MesaID = ?";
-                $stmtLiberar = $conexion->prepare($sqlLiberar);
+                $stmtLiberar = $this->db->prepare($sqlLiberar);
                 $stmtLiberar->execute([$reserva['mesa_id']]);
 
                 $sqlEliminar = "DELETE FROM reservas WHERE id = ?";
-                $stmtEliminar = $conexion->prepare($sqlEliminar);
+                $stmtEliminar = $this->db->prepare($sqlEliminar);
                 $stmtEliminar->execute([$reserva['id']]);
             }
         }
     }
 
-
     public function liberarMesasPasadas()
     {
-        $conexion = Conexion::conectar();
-
         $sql = "SELECT * FROM reservas WHERE Estado = 'Activa'";
-        $stmt = $conexion->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -215,12 +202,12 @@ class Reserva
             if ($ahora > $tiempoReserva) {
                 // Liberar mesa
                 $sqlMesa = "UPDATE mesas SET Estado = 'Disponible' WHERE MesaID = ?";
-                $stmtMesa = $conexion->prepare($sqlMesa);
+                $stmtMesa = $this->db->prepare($sqlMesa);
                 $stmtMesa->execute([$reserva['mesa_id']]);
 
                 // Marcar la reserva como Finalizada
                 $sqlReserva = "UPDATE reservas SET Estado = 'Finalizada' WHERE id = ?";
-                $stmtReserva = $conexion->prepare($sqlReserva);
+                $stmtReserva = $this->db->prepare($sqlReserva);
                 $stmtReserva->execute([$reserva['id']]);
             }
         }

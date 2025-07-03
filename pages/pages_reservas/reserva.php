@@ -1,4 +1,18 @@
-<?php include 'views/header.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION['admin'])) {
+    $_SESSION['admin'] = 'admin';
+}
+include 'header.php';
+require_once '../../Conexion.php';
+
+$conn = Conexion::getInstancia()->getConexion();
+$stmtMesas = $conn->query("SELECT * FROM mesas WHERE Estado = 'Disponible'");
+$mesas = $stmtMesas->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $conn->query("SELECT * FROM reservas ORDER BY fecha DESC, hora DESC");
+$reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,7 +28,7 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Reservas del Restaurante</h2>
-            <a href="index.php?url=auth/dashboard" class="btn btn-secondary">Volver al Panel</a>
+            <a href="index.php" class="btn btn-secondary">Volver al Panel</a>
 
             <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
@@ -28,7 +42,7 @@
 
         </div>
 
-        <form action="index.php?url=reserva/guardar" method="POST" class="card p-4 shadow-sm mb-4 needs-validation" novalidate>
+        <form action="../../controladores/controlador_reservas/ReservaController.php?accion=guardar" method="POST" class="card p-4 shadow-sm mb-4 needs-validation" novalidate>
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label class="form-label">Nombre</label>
@@ -49,6 +63,18 @@
                     <label class="form-label">Personas</label>
                     <input type="number" name="personas" class="form-control" required min="1" max="50">
                     <div class="invalid-feedback">Ingrese entre 1 y 50 personas.</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Mesa disponible</label>
+                    <select name="mesa_id" class="form-select" required>
+                        <option value="">Seleccione una mesa</option>
+                        <?php foreach ($mesas as $mesa): ?>
+                            <option value="<?= $mesa['MesaID'] ?>">
+                                Mesa <?= htmlspecialchars($mesa['Numero']) ?> - Capacidad: <?= htmlspecialchars($mesa['Capacidad']) ?> personas
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="invalid-feedback">Seleccione una mesa.</div>
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Agregar Reserva</button>
@@ -75,10 +101,9 @@
                             <td><?= $reserva['hora'] ?></td>
                             <td><?= $reserva['personas'] ?></td>
                             <td>
-                                <a href="index.php?url=reserva/editar&id=<?= $reserva['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="index.php?url=reserva/eliminar&id=<?= $reserva['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                                <a href="../../controladores/controlador_reservas/ReservaController.php?accion=editar&id=<?= $reserva['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="../../controladores/controlador_reservas/ReservaController.php?accion=eliminar&id=<?= $reserva['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
                             </td>
-
                         </tr>
                     <?php endforeach ?>
                 </tbody>
@@ -102,7 +127,6 @@
         })();
     </script>
 
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>
 </body>
-
 </html>

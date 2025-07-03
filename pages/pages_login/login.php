@@ -28,7 +28,7 @@ $error = $_GET['error'] ?? '';
             <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña"><br>
             <button type="submit">Iniciar Sesión</button>
         </form>
-        <p><a href="recuperar.php">¿Olvidaste tu contraseña?</a></p>
+        <p><a href="../pages_reservas/recuperar.php">¿Olvidaste tu contraseña?</a></p>
     </div>
     <script>
     document.getElementById('loginForm').onsubmit = function() {

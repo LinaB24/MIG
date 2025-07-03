@@ -9,8 +9,8 @@ $Modelo = new Administradores();
 <head>
     <meta charset="UTF-8">
     <title>Administradores</title>
-    <link rel="stylesheet" href="../../assets/estilos.css">
-    <link rel="stylesheet" href="../../assets/estilos.css">
+    <link rel="stylesheet" href="../../css/estilosindexAdmin.css">
+    <link rel="stylesheet" href="../../css/estilosindexAdmin.css">
 
 </head>
 <body>
@@ -18,7 +18,7 @@ $Modelo = new Administradores();
     <a href="add.php">Registrar Administrador</a><br><br>
     <a href="../pages_existencias/index.php">Ir a inventario</a><br><br>
     <a href="../pages_pedidos/index.php">Ir a tickets</a><br><br>
-    <a href="../pages_reservas/index.php">Ir a reservas</a><br><br>
+    <a href="../pages_reservas/reserva.php">Ir a reservas</a><br><br>
     <table border="1">
         <tr>
             <th>ID</th>

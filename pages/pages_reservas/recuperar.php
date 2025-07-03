@@ -1,4 +1,4 @@
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
@@ -15,7 +15,7 @@
                     <?php endif; ?>
 
                     <form action="index.php?url=auth/restablecer" method="POST">
-                        <input type="hidden" name="usuario" value="<?= htmlspecialchars($_GET['usuario']) ?>">
+                        <input type="hidden" name="usuario" value="<?= isset($_GET['usuario']) ? htmlspecialchars($_GET['usuario']) : '' ?>">
                         <div class="mb-3">
                             <label>Nueva Contraseña</label>
                             <input type="password" class="form-control" name="clave" required>
@@ -31,4 +31,4 @@
         </div>
     </div>
 </div>
-<?php include 'views/footer.php'; ?>
+<?php include 'footer.php'; ?>

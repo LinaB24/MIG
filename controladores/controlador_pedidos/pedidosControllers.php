@@ -99,7 +99,7 @@ switch ($accion) {
 
     default:
         
-        include __DIR__ . '/../../pages/pages_pedidos/index.php';
+        include __DIR__ . '/../../pages/pages_pedidos/listar_pedidos.php';
         break;
 }
 
