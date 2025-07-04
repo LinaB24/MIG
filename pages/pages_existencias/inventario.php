@@ -23,5 +23,5 @@ $movimientos = $modelo->obtenerMovimientos();
             <td><?= $m['fecha'] ?></td>
             <td><?= $m['observaciones'] ?></td>
         </tr>
-    <?php endforeach; ?>
+    <?php endforeach; ?>
 </table>

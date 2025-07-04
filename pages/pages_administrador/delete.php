@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Eliminar Administrador</title>
-    <link rel="stylesheet" href="../../assets/estilos.css">
+    <link rel="stylesheet" href="../../css/add_delet_edit_admin.css">
 
 </head>
 <body>

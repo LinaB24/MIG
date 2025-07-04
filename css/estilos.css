@@ -32,7 +32,7 @@ body {
 
 
 h1, h3 {
-    color: #fff;
+    color: #4b2105;
 }
 
 h2{
@@ -42,7 +42,7 @@ h2{
 
 /* --- Formularios --- */
 form {
-    background: linear-gradient(45deg, #ffffff, #e2a140);
+    background: #fff; ;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -61,7 +61,7 @@ input[type="number"],
 select {
     border-radius: 10px;
 }
-/*----------------------------------------------------------------------------------------------------------------*/
+
 /* --- Botones --- */
 /* Botón Guardar (verde) */
 .btn-success {
@@ -205,7 +205,7 @@ select {
     transition: backgrou
 }
 
-/*------------------------------------------------------------------*/
+
 
 /* --- Contenedor principal del ticket --- */
 .ticket-container {
@@ -263,7 +263,7 @@ select {
     color: #000 !important;
 }
 
-/*-----------------------------------------------------------------------------*/
+
 
 .table tfoot {
     background-color: #f1f1f1;
@@ -297,26 +297,76 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.footer-mig {
+
+/* Estilo base para la tabla */
+#tabla-movimientos {
     width: 100%;
-    background-color: #4b2105; /* Cambia este color al que tú quieras */
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 40px;
-    position: relative;
-    left: 0;
-    bottom: 0;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
+/* Encabezado de la tabla */
+#tabla-movimientos thead {
+    background-color: #f8c471; /* Amarillo pastel */
+    color: #333;
+}
 
+#tabla-movimientos thead th {
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 2px solid #e1e1e1;
+}
 
+/* Cuerpo de la tabla */
+#tabla-movimientos tbody td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
 
+/* Hover de filas */
+#tabla-movimientos tbody tr:hover {
+    background-color: #fdf2e9;
+    transition: background-color 0.3s ease;
+}
 
+/* Alternancia de colores por fila (opcional) */
+#tabla-movimientos tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
 
+/* Responsive wrapper para contenedor */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 20px;
+}
 
+footer {
+    background: linear-gradient(to right, #4b2c0a, #6e3c1c);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    /* border-top: 3px solid #d39e3b; */
+    margin-top: auto;
+    z-index: 10;
+}
 
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+}
 
-
-
-
+footer a:hover {
+    text-decoration: underline;
+}

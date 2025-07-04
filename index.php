@@ -29,7 +29,7 @@
 
       <!-- Logo y nombre del grupo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
-  <img src="assets/logo-negro.png" alt="Logo" width="40" height="40" class="me-2 logo-svg">
+  <img src="assets/logo-negro.png" alt="Logo" width="50" height="50" class="me-2 logo-svg">
   <strong>GRUPO MIG</strong>
 </a>
 
@@ -81,21 +81,21 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/imagen1.jpg" class="d-block w-100" height="750px" alt="...">
+        <img src="assets/imagen1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Bienvenidos a GRUPO MIG</h5>
           <p>Proveemos soluciones tecnológicas innovadoras.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/imagen2.jpg" class="d-block w-100" height="750px" alt="...">
+        <img src="assets/imagen2.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Transforma tu negocio</h5>
           <p>Con nuestras herramientas tecnológicas de vanguardia.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/imagen3.jpg" class="d-block w-100" height="750px" alt="...">
+        <img src="assets/imagen3.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Tu socio estratégico</h5>
           <p>En el camino hacia el éxito.</p>
@@ -196,38 +196,63 @@
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
+    <br>
+    <br>
+    <br>
+
 
     <!-- Sobre Nosotros -->
-<section id="sobre-nosotros" class="container mt-5">
-  <br>
-  <br>
-  <br>
-  <h2>Sobre Nosotros</h2>
-  <p>
-    Somos estudiantes del SENA del Centro de Diseño y Meteorología, desarrollando este proyecto POS para
-    restaurantes como parte de nuestro trabajo de grado. Nuestro equipo fusiona creatividad, tecnología y
-    pasión para ofrecer soluciones innovadoras que mejoren la experiencia de los usuarios.
-  </p>
-  <h2>Nuestra Historia</h2>
-  <p>
-    El proyecto nació de la inquietud por optimizar el servicio en los restaurantes, combinando nuestros
-    conocimientos en diseño y tecnología. A lo largo de meses de investigación y desarrollo, hemos creado una
-    herramienta que no solo facilita la gestión de ventas, sino que también mejora la experiencia del cliente.
-  </p>
-  <h2>Misión y Visión</h2>
-  <div>
-    <h3>Misión</h3>
-    <p>
-      Ofrecer un sistema POS innovador y eficiente que transforme la gestión de restaurantes, integrando
-      tecnología y diseño para facilitar la labor diaria y potenciar la experiencia de los clientes.
-    </p>
-    <h3>Visión</h3>
-    <p>
-      Convertirnos en referentes en soluciones tecnológicas para el sector gastronómico, impulsando la
-      transformación digital en los establecimientos y promoviendo la innovación en cada proyecto.
-    </p>
+<div class="accordion" id="accordionSobreNosotros">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Sobre Nosotros
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionSobreNosotros">
+      <div class="accordion-body">
+        Somos estudiantes del SENA del Centro de Diseño y Metrología, desarrollando este proyecto POS para restaurantes como parte de nuestro trabajo de grado...
+      </div>
+    </div>
   </div>
-  <h2>Nuestro Equipo</h2>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Nuestra Historia
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSobreNosotros">
+      <div class="accordion-body">
+        El proyecto nació de la inquietud por optimizar el servicio en los restaurantes, combinando nuestros conocimientos...
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Misión y Visión
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSobreNosotros">
+      <div class="accordion-body">
+        <h5>Misión</h5>
+        Ofrecer un sistema POS innovador...
+        <h5>Visión</h5>
+        Convertirnos en referentes en soluciones tecnológicas...
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+
+  <section id="nuestro-equipo" class="container mt-5">
+  <h2 class="faq-title">Nuestro Equipo</h2>
+  <br>
   <div class="row">
     <div class="col-md-3 text-center">
       <img src="assets/perfiles2.jpg" alt="Arley Culma" class="img-fluid rounded-circle mb-2" style="width:120px;">
@@ -240,7 +265,7 @@
       <p>Desarrollador</p>
     </div>
     <div class="col-md-3 text-center">
-      <img src="assets/perfiles.jpg" alt="Diego Gutierrez" class="img-fluid rounded-circle mb-2" style="width:120px;">
+      <img src="assets/perfiles2.jpg" alt="Arley Culma" class="img-fluid rounded-circle mb-2" style="width:120px;">
       <h3>Diego Gutierrez</h3>
       <p>Desarrollador</p>
     </div>
@@ -250,25 +275,29 @@
       <p>Desarrollador</p>
     </div>
   </div>
-  <h2>Testimonios</h2>
+</section>
+
+  <br>
+  <br>
+<section>
+  <section class="testimonios-caja">
+  <h2 class="faq-title">Testimonios</h2>
   <blockquote>
-    <p>"El sistema POS ha revolucionado la manera en que gestionamos nuestro restaurante, simplificando
-      procesos y mejorando la atención al cliente."</p>
+    <p>"El sistema POS ha revolucionado la manera en que gestionamos nuestro restaurante, simplificando procesos y mejorando la atención al cliente."</p>
     <cite>— Cliente Satisfecho</cite>
   </blockquote>
   <blockquote>
-    <p>"Un proyecto innovador y bien pensado, que combina lo mejor de la tecnología y el diseño para
-      optimizar la experiencia en el sector gastronómico."</p>
+    <p>"Un proyecto innovador y bien pensado, que combina lo mejor de la tecnología y el diseño para optimizar la experiencia en el sector gastronómico."</p>
     <cite>— Experto en Hostelería</cite>
   </blockquote>
-  <div class="mt-4">
-    <h2>¿Quieres saber más?</h2>
+  <div>
+    <h2 class="faq-title">¿Quieres saber más?</h2>
     <p>
-      Ponte en contacto con nosotros para conocer más sobre el proyecto y nuestras soluciones para
-      restaurantes.
+      Ponte en contacto con nosotros para conocer más sobre el proyecto y nuestras soluciones para restaurantes.
     </p>
     <a class="btn btn-primary" href="#contacto">Contáctanos</a>
   </div>
+</section>
 </section>
 </div>
   </section> <!-- Aquí termina #sobre-nosotros -->

@@ -15,6 +15,13 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
 <head>
     <meta charset="UTF-8">
     <title>Lista de Pedidos</title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+
+    <!-- DataTables CSS con botones -->
+    <link href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.3.1/b-3.2.3/b-html5-3.2.3/b-print-3.2.3/datatables.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="../../css/listar_pedidos.css">
 </head>
@@ -22,7 +29,7 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
 <body class="bg-light">
     <div class="container pedidos-contenedor mt-5">
         <h2>Lista de Pedidos</h2>
-        <table class="table table-striped">
+        <table id="tablaPedidos" class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -51,5 +58,27 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
 
         <a href="index.php" class="btn btn-success mt-3">Crear nuevo pedido</a>
     </div>
+     <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- pdfmake para PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <!-- DataTables + botones -->
+    <script src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.3.1/b-3.2.3/b-html5-3.2.3/b-print-3.2.3/datatables.min.js"></script>
+
+    <!-- Inicializar DataTables -->
+    <script>
+      $(document).ready(function() {
+        $('#tablaPedidos').DataTable({
+          dom: 'Bfrtip',
+          buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+          language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+          }
+        });
+      });
+    </script>
 </body>
 </html>

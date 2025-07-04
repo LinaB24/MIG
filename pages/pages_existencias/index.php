@@ -1,7 +1,7 @@
 <?php
 require_once '../../controladores/controlador_existencias/InventarioController.php';
 require_once '../../modelos/modelo_existencias/InventarioModel.php';
-
+// include '../pages_layout/head.php'; 
 $modelo = new InventarioModel();
 $productos = $modelo->obtenerInventario();
 $movimientos = $modelo->obtenerMovimientos();
@@ -21,6 +21,7 @@ $movimientos = $modelo->obtenerMovimientos();
     </style>
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- DataTables JS -->
@@ -31,7 +32,6 @@ $movimientos = $modelo->obtenerMovimientos();
     <h1>Registro de Existencias</h1>
 
     <?php include 'formulario.php'; ?>
-
     <h2>Existencias actuales</h2>
     <table>
         <tr><th>Producto</th><th>Stock</th></tr>
@@ -41,6 +41,7 @@ $movimientos = $modelo->obtenerMovimientos();
     </table>
 
     <h2>Movimientos recientes</h2>
+    <div class="table-responsive">
     <table id="tabla-movimientos">
         <thead>
             <tr><th>Producto</th><th>Tipo</th><th>Cantidad</th><th>Fecha</th><th>Obs</th></tr>
@@ -57,6 +58,8 @@ $movimientos = $modelo->obtenerMovimientos();
         <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
+
     <button>
         <a href="../pages_administrador/index.php">Volver al inicio</a>
     </button>
@@ -71,6 +74,7 @@ $movimientos = $modelo->obtenerMovimientos();
         });
     });
 </script>
+<?php include '../pages_layout/footer.php'; ?>
 
 </body>
 </html>

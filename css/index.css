@@ -191,6 +191,5 @@ form .form-control:focus {
 
 .servicio-card:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
 }
-
