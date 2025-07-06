@@ -52,7 +52,7 @@
             <a class="nav-link" href="#contacto">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#sobre-nosotros">Sobre nosotros</a>
+            <a class="nav-link" href="#accordionSobreNosotros">Sobre nosotros</a>
           </li>
         </ul>
 
@@ -200,7 +200,6 @@
     <br>
     <br>
 
-
     <!-- Sobre Nosotros -->
 <div class="accordion" id="accordionSobreNosotros">
   <div class="accordion-item">
@@ -295,7 +294,9 @@
     <p>
       Ponte en contacto con nosotros para conocer más sobre el proyecto y nuestras soluciones para restaurantes.
     </p>
-    <a class="btn btn-primary" href="#contacto">Contáctanos</a>
+    <div style="text-align: center; margin-top: 20px;">
+  <a class="btn btn-primary" href="#contacto">Contáctanos</a>
+</div>
   </div>
 </section>
 </section>
