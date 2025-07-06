@@ -33,7 +33,7 @@ $stmt = $conn->prepare("
 $stmt->execute([$pedidoId]);
 $platos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <div class="container mt-5 ticket-container">
     <h2 class="mb-4">Ticket del Pedido</h2>
     <p><strong>Cliente:</strong> <?= htmlspecialchars($pedido['Cliente']) ?></p>

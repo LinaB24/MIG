@@ -11,7 +11,8 @@ $movimientos = $modelo->obtenerMovimientos();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inventario</title>
+    <title>Existencias</title>
+    <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
@@ -28,10 +29,10 @@ $movimientos = $modelo->obtenerMovimientos();
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-
+    <?php include 'formulario.php'; ?>
     <h1>Registro de Existencias</h1>
 
-    <?php include 'formulario.php'; ?>
+    
     <h2>Existencias actuales</h2>
     <table>
         <tr><th>Producto</th><th>Stock</th></tr>

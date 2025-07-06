@@ -1,9 +1,11 @@
 <?php include __DIR__ . '/../pages_layout/head.php'; ?>
-
+<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <div class="container mt-5">
     <h2>Platos</h2>
-    <a href="../../controladores/controlador_plato/PlatoController.php?accion=crear" class="btn btn-success mb-3">Agregar Plato</a><br><br>
-    <a href="/MIG/pages/pages_administrador/index.php">Volver al inicio</a>
+    <a href="../../controladores/controlador_plato/PlatoController.php?accion=crear" class="btn btn-success mb-3">Agregar Plato</a><br>
+    <form action="../pages_administrador/index.php" method="POST">
+            <button class="custom-btn" type="submit">Volver al inicio</button>
+    </form>
     <table class="table table-bordered">
         <thead>
             <tr>

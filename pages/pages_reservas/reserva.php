@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     $_SESSION['admin'] = 'admin';
 }
-include 'header.php';
+include '../pages_layout/head.php';
 require_once '../../Conexion.php';
 
 $conn = Conexion::getInstancia()->getConexion();
@@ -30,7 +30,9 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Reservas del Restaurante</h2>
-            <a href="index.php" class="btn btn-secondary">Volver al Panel</a>
+            <form action="../pages_administrador/index.php" method="POST">
+            <button class="btn btn-secondary" type="submit">Volver al inicio</button>
+            </form>
 
             <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
@@ -129,6 +131,6 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         })();
     </script>
 
-<?php include 'footer.php'; ?>
+<?php include '../pages_layout/footer.php'; ?>
 </body>
 </html>

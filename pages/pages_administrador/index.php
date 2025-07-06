@@ -21,7 +21,7 @@ $Modelo = new Administradores();
     <a href="../pages_existencias/index.php" class="custom-btn">Existencias</a>
     <a href="../pages_pedidos/index.php" class="custom-btn">Tickets/Pedidos</a>
     <a href="../pages_reservas/reserva.php" class="custom-btn">Reservas</a>
-    <a href="../pages_platos/index.php">Platos</a>
+    <a href="../pages_platos/index.php" class="custom-btn">Platos</a>
 </div>
 
 

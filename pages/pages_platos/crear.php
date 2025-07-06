@@ -1,4 +1,5 @@
 <?php include __DIR__ . '/../pages_layout/head.php'; ?>
+<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <div class="container mt-5">
     <h2>Agregar Plato</h2>
     <form method="POST" action="../../controladores/controlador_plato/PlatoController.php?accion=guardar">

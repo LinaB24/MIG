@@ -1,15 +1,17 @@
 <?php
 $titulo = "Nuevo Pedido";
-include __DIR__ . '/../pages_layout/head.php';
+
 
 // Incluye la clase de conexión y obtén el objeto PDO
 require_once __DIR__ . '/../../Conexion.php';
+include __DIR__ . '/../pages_layout/head.php';
+
 $conn = Conexion::getInstancia()->getConexion();
 ?>
-
+<link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <h2 class="mb-4">Nuevo Pedido</h2>
 <h4>
-<a href="../pages_administrador/index.php">Volver al inicio</a>
+<a href="../pages_administrador/index.php"  class="custom-btn" >Volver al inicio</a>
 </h4>
 
 <form action="../../controladores/controlador_pedidos/pedidosControllers.php?accion=guardar" method="POST">

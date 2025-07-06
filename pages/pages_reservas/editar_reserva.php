@@ -1,4 +1,5 @@
-<?php include 'header.php'; ?>
+<?php include('../pages_layout/head.php'); ?>
+<link rel="stylesheet" href="../../css/estilosReservas.css">
 
 <div class="container mt-5">
     <h2 class="mb-4">Editar Reserva</h2>
@@ -41,4 +42,4 @@
     </form>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include('../pages_layout/footer.php'); ?>

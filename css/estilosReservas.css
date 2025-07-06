@@ -1,20 +1,57 @@
+.form-control,
+.form-select {
+  background-color: #fffaf3;
+  border: 1px solid #d6a567;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #4b2c0a;
+}
 
+.btn-primary {
+  background-color: #e2a140;
+  border: 2px solid #e2a140;
+  color: #4b2105;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #cc8a33;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f0d28c;
+  color: #4b2c0a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: #e9b44c;
+}
+
+/* 
     :root {
     --blanco: #ffffff;
-    --oscuro: #4b2105; /* marrón oscuro del h1 */
-    --primario: #e2a140; /* anaranjado degradado del fondo */
-    --secundario: #6e4b34; /* marrón suave del shadow */
+    --oscuro: #4b2105; 
+    --primario: #e2a140; 
+    --secundario: #6e4b34; 
     --gris: #a8a8a8;
     --grisClaro: #f5f1ed;
     --rojoCafé: #891c1c;
     --marronOscuro: rgb(80, 48, 27);
-    --marronClaro: rgb(171, 96, 46);
+    --marronClaro: rgb(171, 96, 46); */
 
-
+/* 
     }
 
     body {
-    background-color: #f1b862;
+    background-color: #ffffff;
     font-family: "lora", sans-serif;
     }
 
@@ -26,8 +63,8 @@
     color: #891c1c;
     font-weight: bold;
 
-    }
-
+    } */
+/* 
     .table th {
     background-color: #4b2105;
     color: #fff;
@@ -50,7 +87,7 @@
     } */
 
     /* Personaliza sin quitar estilos de Bootstrap */
-.custom-navbar {
+/* .custom-navbar {
     background-color:#6e4b34;
 }
 
@@ -58,5 +95,5 @@
 .custom-navbar .navbar-brand {
     color: black;
 }
-
+  */
 

@@ -81,4 +81,5 @@ $pedidos = $conn->query("SELECT * FROM pedidos ORDER BY PedidoID DESC");
       });
     </script>
 </body>
+<?php include __DIR__ . '/../pages_layout/footer.php'; ?>
 </html>
