@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2025 a las 04:08:53
+-- Tiempo de generación: 09-07-2025 a las 07:03:18
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -176,7 +176,10 @@ INSERT INTO `inventario_movimientos` (`id`, `producto_id`, `tipo`, `cantidad`, `
 (12, 1, 'entrada', 56, '2025-06-28 20:58:45', 'pedido nuevo'),
 (0, 1, 'salida', 12, '2025-06-30 18:53:45', 'llovio'),
 (0, 1, 'entrada', 2, '2025-06-30 18:53:53', ''),
-(0, 1, 'entrada', 6, '2025-07-01 21:08:16', '');
+(0, 1, 'entrada', 6, '2025-07-01 21:08:16', ''),
+(0, 1, 'entrada', 13, '2025-07-06 14:09:42', 'nada'),
+(0, 1, 'entrada', 12, '2025-07-06 14:17:47', 'afsdg'),
+(0, 1, 'entrada', 23, '2025-07-06 14:52:09', 'nada');
 
 -- --------------------------------------------------------
 
@@ -263,8 +266,6 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`PedidoID`, `Cliente`, `Mesa`, `FechaHora`) VALUES
-(15, 'Alastors', 6, '2025-06-30 13:52:03'),
-(16, 'Alastor', 6, '2025-06-30 13:52:25'),
 (17, 'Alastor', 6, '2025-06-30 13:57:20'),
 (18, 'Alastor', 6, '2025-06-30 13:57:36'),
 (19, 'dsfads', 2, '2025-06-30 13:59:12'),
@@ -273,13 +274,13 @@ INSERT INTO `pedidos` (`PedidoID`, `Cliente`, `Mesa`, `FechaHora`) VALUES
 (22, 'werw', 23, '2025-06-30 14:07:03'),
 (23, 'werw', 23, '2025-06-30 14:09:22'),
 (24, 'werw', 2, '2025-06-30 14:09:32'),
-(25, 'werw', 2, '2025-06-30 14:09:56'),
 (28, 'werw', 23, '2025-06-30 14:13:06'),
 (29, 'werw', 23, '2025-06-30 14:25:09'),
 (34, 'nadie', 2, '2025-06-30 15:13:34'),
-(36, 'nadie', 6, '2025-06-30 15:21:20'),
-(37, 'pepe', 4, '2025-06-30 19:33:46'),
-(38, 'pepe', 4, '2025-07-01 21:07:58');
+(36, 'nadieg', 6, '2025-06-30 15:21:20'),
+(39, 'pepe', 4, '2025-07-06 14:27:48'),
+(40, 'pepe', 4, '2025-07-06 14:52:27'),
+(41, 'pepe', 4, '2025-07-06 16:53:14');
 
 -- --------------------------------------------------------
 
@@ -292,8 +293,18 @@ CREATE TABLE `pedidosdomicilio` (
   `ClienteID` int(11) NOT NULL,
   `DireccionEntrega` text NOT NULL,
   `Precio` decimal(10,2) NOT NULL,
-  `Estado` enum('Pendiente','Enviado','Entregado') DEFAULT 'Pendiente'
+  `Estado` enum('Pendiente','Enviado','Entregado') DEFAULT 'Pendiente',
+  `Productos` text DEFAULT NULL,
+  `FechaHora` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidosdomicilio`
+--
+
+INSERT INTO `pedidosdomicilio` (`PedidoID`, `ClienteID`, `DireccionEntrega`, `Precio`, `Estado`, `Productos`, `FechaHora`) VALUES
+(1, 1, '123', 12312.00, 'Enviado', 'poio', '2025-07-08 23:39:14'),
+(2, 2, 'calle don juanito perdido que ya encontramos', 20000.00, 'Enviado', 'arroz chino de perro', '2025-07-08 23:39:59');
 
 -- --------------------------------------------------------
 
@@ -318,7 +329,9 @@ INSERT INTO `platos` (`PlatoID`, `nombre`, `descripcion`, `precio`, `cantidad`) 
 (2, 'Pizza Margarita', 'Queso mozzarella, tomate y albahaca fresca.', 22000.00, 15),
 (3, 'Ensalada César', 'Lechuga, pollo a la plancha, crutones y aderezo César.', 15000.00, 10),
 (4, 'Pasta Alfredo', 'Fettuccine con salsa Alfredo cremosa y pollo.', 20000.00, 12),
-(5, 'Sándwich de Pollo', 'Pollo a la plancha, lechuga, tomate y mayonesa.', 16000.00, 18);
+(5, 'Sándwich de Pollo', 'Pollo a la plancha, lechuga, tomate y mayonesa.', 16000.00, 19),
+(16, 'sopa de cerdo', 'sopa con papa y cerdo', 13000.00, 40),
+(17, 'poio en salsa', 'pues es pollo bro', 12000.00, 13);
 
 -- --------------------------------------------------------
 
@@ -337,11 +350,7 @@ CREATE TABLE `platos_pedido` (
 --
 
 INSERT INTO `platos_pedido` (`PedidoID`, `PlatoID`, `Cantidad`) VALUES
-(15, 2, 56),
-(15, 3, 7),
-(16, 2, 56),
-(16, 3, 7),
-(17, 2, 5),
+(17, 2, 7),
 (18, 1, 7),
 (19, 2, 5),
 (19, 3, 6),
@@ -350,15 +359,13 @@ INSERT INTO `platos_pedido` (`PedidoID`, `PlatoID`, `Cantidad`) VALUES
 (22, 1, 78),
 (23, 1, 5),
 (24, 1, 5),
-(25, 1, 5),
 (28, 1, 1),
 (29, 1, 8),
 (34, 5, 2),
 (36, 4, 1),
-(37, 2, 2),
-(37, 3, 1),
-(37, 4, 1),
-(38, 2, 2);
+(39, 1, 2),
+(40, 2, 1),
+(41, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -379,7 +386,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `stock`) VALUES
-(1, '01', 'Papel Higiénico', 'Rollo jumbo', 52);
+(1, '01', 'Papel Higiénico', 'Rollo jumbo', 100);
 
 -- --------------------------------------------------------
 
@@ -443,8 +450,18 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`id`, `nombre`, `fecha`, `hora`, `personas`, `mesa_id`, `Estado`) VALUES
-(36, 'Camila Lopez', '2025-06-27', '14:27:00', 5, 7, 'Activa'),
-(37, 'carolina gutierrez', '2025-06-27', '16:28:00', 2, 2, 'Pendiente');
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
+(0, 'Arley', '2025-07-15', '23:58:00', 2, 3, 'Pendiente'),
+(0, 'Arleyyyyyyyyyyyyyyyy', '2025-07-15', '12:20:00', 2, 3, 'Pendiente'),
+(0, 'antoni', '2025-07-15', '03:51:00', 2, 3, 'Pendiente'),
+(0, 'pepe', '2025-07-08', '14:58:00', 2, 2, 'Pendiente'),
+(0, 'antonio', '2025-07-15', '23:44:00', 2, 3, 'Pendiente'),
+(0, 'hdfhdfh', '2025-07-17', '21:13:00', 3, 3, 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -489,7 +506,7 @@ CREATE TABLE `tb_administradores` (
 --
 
 INSERT INTO `tb_administradores` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`, `USUARIO`, `PASSWORD`, `PERFIL`, `ESTADO`) VALUES
-(12, 'nadie', 'nadie', 'Admin don nadie', '$2y$10$DUD4Wbx3Pj1rlCrBcec5IeqIoj/BR8BhDRSnABjR8FZf5.lI8jYCu', 'Administrador', 'Activo'),
+(12, 'nadie', 'nadieeee', 'Admin don nadie', '$2y$10$DUD4Wbx3Pj1rlCrBcec5IeqIoj/BR8BhDRSnABjR8FZf5.lI8jYCu', 'Administrador', 'Activo'),
 (13, 'lina', 'maria', 'Admin lina', '$2y$10$5QtPDz4FQdEXnGnjP7BuzOguEtSnRyAzmQ4F/bsMIQ8.1/TpYln66', 'Administrador', 'Activo'),
 (14, 'dayis', 'dayis', 'Admin dayis', '$2y$10$xyi7x1GuJUWqVUYedXGe8usBEktrtV7/Jm0Fc8Oox7nX0Vo8v9z/i', 'Administrador', 'Activo'),
 (15, 'diego', 'juandigu', 'Admin diego', '$2y$10$QZQvy7f4tS9Zd/oNQ3sRheFdrsnIQKCK.45voyGwgSLwm2Q4V63w6', 'Administrador', 'Activo');
@@ -849,19 +866,19 @@ ALTER TABLE `pagos_pendientes`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidosdomicilio`
 --
 ALTER TABLE `pedidosdomicilio`
-  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `platos`
 --
 ALTER TABLE `platos`
-  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -885,7 +902,7 @@ ALTER TABLE `reservas_simple`
 -- AUTO_INCREMENT de la tabla `tb_administradores`
 --
 ALTER TABLE `tb_administradores`
-  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `tb_empleados`
