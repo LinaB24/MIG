@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,7 +31,7 @@
       <!-- Logo y nombre del grupo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
   <img src="assets/logo-negro.png" alt="Logo" width="50" height="50" class="me-2 logo-svg">
-  <strong>GRUPO MIG</strong>
+  <strong>Grupo MIG</strong>
 </a>
 
       <!-- Botón colapsable para pantallas pequeñas -->

@@ -18,7 +18,7 @@ body {
 
 /* Navbar */
 .navbar.bg-body-tertiary {
-  background-color: #6E4B34 !important;
+  background-color: #4b2c0a !important;
   z-index: 99;
   position: fixed;
   width: 100%;
@@ -26,7 +26,7 @@ body {
 }
 
 .navbar-brand strong {
-  color: #e2a140;
+  color: #ffffff;
   font-weight: bold;
 }
 

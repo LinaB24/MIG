@@ -88,7 +88,7 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="card shadow-sm p-3">
             <h5 class="mb-3">Listado de Reservas</h5>
             <table class="table table-bordered table-hover">
-                <thead class="table-dark">
+                <thead class="encabezado-reservas">
                     <tr>
                         <th>Nombre</th>
                         <th>Fecha</th>

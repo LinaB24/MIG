@@ -13,7 +13,7 @@ $Modelo = new Administradores();
     <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body><br><br>
     <h1>Administradores</h1>
 <!-- Contenedor flex para los botones -->
 <div class="custom-btn-container">
