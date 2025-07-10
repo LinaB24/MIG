@@ -7,14 +7,14 @@ class InventarioModel {
     public function __construct() {
         $this->db = Conexion::getInstancia()->getConexion();
     }
-
+    
     // Verificar que el producto exista antes de registrar movimiento
     private function productoExiste($producto_id) {
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM productos WHERE id = ?");
         $stmt->execute([$producto_id]);
         return $stmt->fetchColumn() > 0;
     }
-
+    
     public function registrarMovimiento($producto_id, $tipo, $cantidad, $observaciones) {
         // Validar existencia del producto
         if (!$this->productoExiste($producto_id)) {
@@ -57,8 +57,8 @@ class InventarioModel {
 
     public function obtenerMovimientos() {
         $stmt = $this->db->query("SELECT m.*, p.nombre FROM inventario_movimientos m 
-                                  JOIN productos p ON m.producto_id = p.id 
-                                  ORDER BY m.fecha DESC");
+                                JOIN productos p ON m.producto_id = p.id 
+                                ORDER BY m.fecha DESC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -67,4 +67,38 @@ class InventarioModel {
         $stmt->execute([$producto_id]);
         return (int) $stmt->fetchColumn();
     }
+
+    public function registrarProducto($codigo, $nombre, $descripcion, $stock) {
+    // Validaciones básicas
+    if (empty($codigo)) {
+        throw new Exception("❌ El código del producto es requerido.");
+    }
+    
+    if (empty($nombre)) {
+        throw new Exception("❌ El nombre del producto es requerido.");
+    }
+    
+    if ($stock < 0) {
+        throw new Exception("❌ El stock inicial no puede ser negativo.");
+    }
+
+    // Verificar si el código ya existe
+    $stmt = $this->db->prepare("SELECT COUNT(*) FROM productos WHERE codigo = ?");
+    $stmt->execute([$codigo]);
+    if ($stmt->fetchColumn() > 0) {
+        throw new Exception("❌ Ya existe un producto con este código.");
+    }
+
+    // Registrar el producto
+    $stmt = $this->db->prepare("INSERT INTO productos 
+        (codigo, nombre, descripcion, stock) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$codigo, $nombre, $descripcion, $stock]);
+
+    // Registrar automáticamente una entrada inicial de inventario
+    if ($stock > 0) {
+        $producto_id = $this->db->lastInsertId();
+        $this->registrarMovimiento($producto_id, 'entrada', $stock, 'Stock inicial');
+    }
+}
+
 }

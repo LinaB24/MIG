@@ -34,6 +34,8 @@ $movimientos = $modelo->obtenerMovimientos();
 
     
     <h2>Existencias actuales</h2>
+    <a href="formulario_registro.php" class="btn btn-primary mb-3">Registrar nuevo producto</a>
+
     <table>
         <tr><th>Producto</th><th>Stock</th></tr>
         <?php foreach ($productos as $p): ?>
