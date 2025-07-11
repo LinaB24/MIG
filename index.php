@@ -63,7 +63,9 @@
         </form>
 
         <!-- Botón separado -->
-        <a class="nav-link" href="pages/pages_login/login.php">Iniciar sesión</a>
+        <a class="nav-link" href="pages/pages_login/login.php">Iniciar como administrador</a>
+        <a class="nav-link" href="MIG-dayana/index.php">Iniciar como usuario</a>
+
       </div>
 
     </div>

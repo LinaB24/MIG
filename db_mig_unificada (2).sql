@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2025 a las 07:03:18
+-- Tiempo de generación: 11-07-2025 a las 06:29:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -179,7 +179,15 @@ INSERT INTO `inventario_movimientos` (`id`, `producto_id`, `tipo`, `cantidad`, `
 (0, 1, 'entrada', 6, '2025-07-01 21:08:16', ''),
 (0, 1, 'entrada', 13, '2025-07-06 14:09:42', 'nada'),
 (0, 1, 'entrada', 12, '2025-07-06 14:17:47', 'afsdg'),
-(0, 1, 'entrada', 23, '2025-07-06 14:52:09', 'nada');
+(0, 1, 'entrada', 23, '2025-07-06 14:52:09', 'nada'),
+(0, 0, 'entrada', 22, '2025-07-10 14:29:19', 'Stock inicial'),
+(0, 0, 'entrada', 34, '2025-07-10 14:36:00', 'Stock inicial'),
+(0, 1, 'entrada', 12, '2025-07-10 15:15:11', 'afd'),
+(0, 1, 'salida', 23, '2025-07-10 15:16:04', 'salio'),
+(0, 2, 'entrada', 12, '2025-07-10 15:21:25', 'prueba :v'),
+(0, 1, 'salida', 23, '2025-07-10 15:21:41', 'nada nuevo'),
+(0, 6, 'entrada', 34, '2025-07-10 15:22:25', 'Stock inicial'),
+(0, 6, 'salida', 3, '2025-07-10 15:23:02', 'nada');
 
 -- --------------------------------------------------------
 
@@ -201,7 +209,7 @@ CREATE TABLE `mesas` (
 INSERT INTO `mesas` (`MesaID`, `Numero`, `Capacidad`, `Estado`) VALUES
 (1, 1, 4, 'Disponible'),
 (2, 2, 2, 'Disponible'),
-(3, 3, 6, 'Disponible'),
+(3, 3, 6, 'Reservada'),
 (4, 4, 4, 'Disponible'),
 (5, 5, 8, 'Disponible'),
 (6, 6, 4, 'Disponible'),
@@ -304,7 +312,8 @@ CREATE TABLE `pedidosdomicilio` (
 
 INSERT INTO `pedidosdomicilio` (`PedidoID`, `ClienteID`, `DireccionEntrega`, `Precio`, `Estado`, `Productos`, `FechaHora`) VALUES
 (1, 1, '123', 12312.00, 'Enviado', 'poio', '2025-07-08 23:39:14'),
-(2, 2, 'calle don juanito perdido que ya encontramos', 20000.00, 'Enviado', 'arroz chino de perro', '2025-07-08 23:39:59');
+(2, 2, 'calle don juanito perdido que ya encontramos', 20000.00, 'Enviado', 'arroz chino de perro', '2025-07-08 23:39:59'),
+(3, 2, 'casa de don juan', 40000.00, 'Enviado', 'poio en salsa y poio frito', '2025-07-09 00:09:51');
 
 -- --------------------------------------------------------
 
@@ -386,7 +395,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `stock`) VALUES
-(1, '01', 'Papel Higiénico', 'Rollo jumbo', 100);
+(1, '01', 'Papel Higiénico', 'Rollo jumbo', 66),
+(2, '2', 'papas', 'wqet', 90),
+(3, '3', 'papas', 'nada', 78),
+(4, '4', 'arroz', '34 arrobas', 68),
+(6, '5', 'Carne de res', '34 porciones', 65);
 
 -- --------------------------------------------------------
 
@@ -450,18 +463,9 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`id`, `nombre`, `fecha`, `hora`, `personas`, `mesa_id`, `Estado`) VALUES
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'yooo', '2025-07-15', '20:36:00', 2, 7, 'Pendiente'),
-(0, 'Arley', '2025-07-15', '23:58:00', 2, 3, 'Pendiente'),
-(0, 'Arleyyyyyyyyyyyyyyyy', '2025-07-15', '12:20:00', 2, 3, 'Pendiente'),
-(0, 'antoni', '2025-07-15', '03:51:00', 2, 3, 'Pendiente'),
-(0, 'pepe', '2025-07-08', '14:58:00', 2, 2, 'Pendiente'),
-(0, 'antonio', '2025-07-15', '23:44:00', 2, 3, 'Pendiente'),
-(0, 'hdfhdfh', '2025-07-17', '21:13:00', 3, 3, 'Pendiente');
+(0, 'juanito', '2025-07-16', '11:03:00', 4, 2, 'Activa'),
+(0, 'pepe', '2025-07-11', '01:06:00', 3, 3, 'Activa'),
+(0, 'pepe', '2025-07-10', '23:06:00', 3, 3, 'Activa');
 
 -- --------------------------------------------------------
 
@@ -577,38 +581,27 @@ CREATE TABLE `transacciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios_admin`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios_admin` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(50) NOT NULL,
   `clave` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios_admin`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios_admin` (`id`, `usuario`, `clave`) VALUES
+INSERT INTO `usuarios` (`id`, `usuario`, `clave`) VALUES
 (4, 'admin', '$2y$10$7Xicoe8hURf9pVWxnpJSpuWBXyGc9T6HAp2kNLAV2zMABNxQhyVOO'),
 (5, 'lizeth', '$2y$10$jhIOI9qpyaEFTImhTW/lZ.nNJvOVpvXtCm/iNjklvcNlNRxJIWh.2'),
-(6, 'alberto', '$2y$10$5y8y69X56i7RnEdnwl/5SO82ejX0IdpTyGR/wNl5QNi305tYprtBq');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios_sistema`
---
-
-CREATE TABLE `usuarios_sistema` (
-  `UsuarioID` int(11) NOT NULL,
-  `Nombre` varchar(100) NOT NULL,
-  `Correo` varchar(100) NOT NULL,
-  `ContraseñaHash` varchar(255) NOT NULL,
-  `Rol` enum('Administrador','Cajero','Cocinero','Empleado') NOT NULL,
-  `FechaRegistro` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(6, 'alberto', '$2y$10$5y8y69X56i7RnEdnwl/5SO82ejX0IdpTyGR/wNl5QNi305tYprtBq'),
+(7, 'pepe', '12345'),
+(8, 'yomero', '$2y$10$.V0tFknukbg0QN7jR4aIKuiFKJjR3uI.KItcZqTbWr8tUxnGmJGdO'),
+(9, 'mesero1', '$2y$10$jwPS32VZYhEeyXRPhjYuTuzD8nIe8qNznKE0YHB9QtNAvqfXJ5UKa'),
+(10, 'mesero2', '$2y$10$kMHx4poGHCfslQSA2xAFFOuEOIJKnQIT1UEJrUNYC82Jrt8Jrr8qC');
 
 --
 -- Índices para tablas volcadas
@@ -720,6 +713,12 @@ ALTER TABLE `platos_pedido`
   ADD KEY `PlatoID` (`PlatoID`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productosproveedores`
 --
 ALTER TABLE `productosproveedores`
@@ -774,17 +773,10 @@ ALTER TABLE `transacciones`
   ADD KEY `UsuarioID` (`UsuarioID`);
 
 --
--- Indices de la tabla `usuarios_admin`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuarios_admin`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `usuarios_sistema`
---
-ALTER TABLE `usuarios_sistema`
-  ADD PRIMARY KEY (`UsuarioID`),
-  ADD UNIQUE KEY `Correo` (`Correo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -872,13 +864,19 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `pedidosdomicilio`
 --
 ALTER TABLE `pedidosdomicilio`
-  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PedidoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `platos`
 --
 ALTER TABLE `platos`
   MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -923,16 +921,10 @@ ALTER TABLE `transacciones`
   MODIFY `TransaccionID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios_admin`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `usuarios_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `usuarios_sistema`
---
-ALTER TABLE `usuarios_sistema`
-  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
