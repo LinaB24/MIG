@@ -222,3 +222,68 @@ form .form-control:focus {
   font-style: italic;
   margin-top: 5px;
 }
+.equipo-card {
+  background-color: var(--grisClaro);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.equipo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primario);
+}
+
+.equipo-card h3 {
+  font-size: 1.25rem;
+  color: var(--oscuro);
+  margin-bottom: 0.5rem;
+}
+
+.equipo-card p {
+  color: #555;
+  margin: 0;
+}
+.equipo-container {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  gap: 2rem; /* espacio entre tarjetas */
+  flex-wrap: wrap; /* para que bajen si la pantalla es pequeña */
+  margin-top: 2rem;
+}
+
+.equipo-card {
+  background-color: #fff;
+  border: 2px solid #e2a140; /* borde anaranjado */
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.equipo-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}

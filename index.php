@@ -131,16 +131,16 @@
       <div class="col-md-4">
         <div class="card h-100 shadow-sm servicio-card">
           <div class="card-body">
-            <h5 class="card-title">Control de Inventario</h5>
-            <p class="card-text">Lleva un control preciso del inventario...</p>
+            <h5 class="card-title">Control de existencias</h5>
+            <p class="card-text">Lleva un control preciso de las existencias en tu stock...</p>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card h-100 shadow-sm servicio-card">
           <div class="card-body">
-            <h5 class="card-title">Administración de Empleados</h5>
-            <p class="card-text">Gestiona la información de tu equipo de trabajo...</p>
+            <h5 class="card-title">Registro de las ventas</h5>
+            <p class="card-text">Gestiona tus pedidos y ventas...</p>
           </div>
         </div>
       </div>
@@ -150,6 +150,7 @@
   <!-- Accordion (Productos) -->
   <section id="productos" class="container mt-5">
     <h2 class="faq-title">Preguntas Frecuentes</h2>
+    <br>
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header">
@@ -247,36 +248,34 @@
   </div>
 </div>
 <br>
-<br>
-<br>
 
 
-  <section id="nuestro-equipo" class="container mt-5">
+<section id="nuestro-equipo" class="container mt-5">
   <h2 class="faq-title">Nuestro Equipo</h2>
-  <br>
-  <div class="row">
-    <div class="col-md-3 text-center">
-      <img src="assets/perfiles2.jpg" alt="Arley Culma" class="img-fluid rounded-circle mb-2" style="width:120px;">
+  <div class="equipo-container">
+    <div class="equipo-card">
+      <img src="assets/perfiles2.jpg" alt="Arley Culma">
       <h3>Arley Culma</h3>
       <p>Desarrollador</p>
     </div>
-    <div class="col-md-3 text-center">
-      <img src="assets/dayis.jpeg" alt="Dayana Lopez" class="img-fluid rounded-circle mb-2" style="width:180px;">
+    <div class="equipo-card">
+      <img src="assets/dayis.jpeg" alt="Dayana Lopez">
       <h3>Dayana Lopez</h3>
       <p>Desarrollador</p>
     </div>
-    <div class="col-md-3 text-center">
-      <img src="assets/perfiles2.jpg" alt="Arley Culma" class="img-fluid rounded-circle mb-2" style="width:120px;">
+    <div class="equipo-card">
+      <img src="assets/perfiles2.jpg" alt="Diego Gutierrez">
       <h3>Diego Gutierrez</h3>
       <p>Desarrollador</p>
     </div>
-    <div class="col-md-3 text-center">
-      <img src="assets/lina.jpeg" alt="Lina Bohorquez" class="img-fluid rounded-circle mb-2" style="width:180px;">
+    <div class="equipo-card">
+      <img src="assets/lina.jpeg" alt="Lina Bohorquez">
       <h3>Lina Bohorquez</h3>
       <p>Desarrollador</p>
     </div>
   </div>
 </section>
+
 
   <br>
   <br>
