@@ -181,20 +181,20 @@
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="container mt-5">
+<section id="contacto" class="container mt-5">
     <h2 class="faq-title">Contacto</h2>
-    <form>
+    <form action="controladores/controlador_contacto/enviar_contacto.php" method="POST">
       <div class="mb-3">
         <label for="name" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="name" placeholder="Tu nombre">
+        <input type="text" class="form-control" id="name" name="nombre" placeholder="Tu nombre" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" placeholder="Tu correo">
+        <input type="email" class="form-control" id="email" name="correo" placeholder="Tu correo" required>
       </div>
       <div class="mb-3">
         <label for="message" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="message" rows="4" placeholder="Tu mensaje"></textarea>
+        <textarea class="form-control" id="message" name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
