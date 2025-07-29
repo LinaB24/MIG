@@ -1,4 +1,4 @@
-<?php include('../pages_layout/head.php'); ?>
+<?php include('../../pages/pages_layout/head.php'); ?>
 <link rel="stylesheet" href="../../css/estilosReservas.css">
 
 <div class="container mt-5">
@@ -38,8 +38,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Actualizar Reserva</button>
-        <a href="reserva.php" class="btn btn-secondary">Cancelar</a>
+        <a href="../../pages/pages_reservas/reserva.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
-<?php include('../pages_layout/footer.php'); ?>
+<?php include('../../pages/pages_layout/footer.php'); ?>
