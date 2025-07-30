@@ -1,4 +1,13 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificación de sesión
+if (!isset($_SESSION['ID']) || $_SESSION['ID'] !== true) {
+    header("Location: ../../pages/pages_login/login.php");
+    exit();
+}
 
 require_once("../../modelos/modelo_administrador/Administradores.php");
 include '../pages_layout/head.php';
@@ -62,7 +71,7 @@ $Modelo = new Administradores();
         </tr>
         <?php }} ?>
     </table>
-    <a href="../../index.php" class="custom-btn">Cerrar sesion</a>
+    <a href="../../controladores/controlador_usuario/Salir.php" class="custom-btn">Cerrar sesion</a>
     <?php include '../pages_layout/footer.php'; ?>
     
 </body>

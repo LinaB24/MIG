@@ -1,3 +1,7 @@
+<?php
+require_once("../../controladores/controlador_usuario/validar_sesion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

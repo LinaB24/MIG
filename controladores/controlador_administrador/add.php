@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/../../includes/admin_header.php';
 require_once("../../modelos/modelo_administrador/Administradores.php"); 
 
 if ($_POST) {

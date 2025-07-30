@@ -41,9 +41,25 @@ class Usuarios {
     }
 
     public function salir() {
-        $_SESSION = [];
-        session_destroy();
-        header("Location: ../../login.php");
+    // Destruir todas las variables de sesión
+    $_SESSION = array();
+    
+    // Destruir la cookie de sesión si existe
+    if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), '', time()-42000, '/');
+    }
+    
+    // Destruir la sesión
+    session_destroy();
+    
+    // Asegurar que el navegador no almacene en caché las páginas protegidas
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    
+    // Redireccionar al login
+    header("Location: ../../login.php");
+    exit();
     }
 }
 ?>

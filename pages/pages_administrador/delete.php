@@ -1,3 +1,5 @@
+<?php
+require_once("../../controladores/controlador_usuario/validar_sesion.php"); ?>
 <?php $Id = $_GET['Id']; ?>
 
 <!DOCTYPE html>

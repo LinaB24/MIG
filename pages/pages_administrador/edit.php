@@ -1,4 +1,5 @@
 <?php
+require_once("../../controladores/controlador_usuario/validar_sesion.php");
 require_once("../../modelos/modelo_administrador/Administradores.php");
 $Modelo = new Administradores();
 

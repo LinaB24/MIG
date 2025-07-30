@@ -1,4 +1,5 @@
 <?php
+require_once("../../controladores/controlador_usuario/validar_sesion.php");
 require_once '../../controladores/controlador_existencias/InventarioController.php';
 require_once '../../modelos/modelo_existencias/InventarioModel.php';
 // include '../pages_layout/head.php'; 

@@ -7,20 +7,41 @@ class Administradores {
     public function __construct() {
         $this->db = Conexion::getInstancia()->getConexion();
     }
-    public function login($usuario, $password) {
-    $sql = "SELECT * FROM tb_administradores WHERE USUARIO = ? AND ESTADO = 'Activo'";
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute([$usuario]);
-    $result = $stmt->fetch();
 
-    if ($result && password_verify($password, $result["PASSWORD"])) {
-        $_SESSION["ID"] = $result["ID_USUARIO"];
-        $_SESSION["NOMBRE"] = $result["NOMBRE"];
-        $_SESSION["PERFIL"] = $result["PERFIL"];
-        return true;
+    public function login($usuario, $password) {
+        try {
+            $sql = "SELECT * FROM tb_administradores WHERE USUARIO = ? AND ESTADO = 'Activo'";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$usuario]);
+            $usuario_db = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($usuario_db && password_verify($password, $usuario_db['PASSWORD'])) {
+                // Guardar datos importantes en la sesión
+                $_SESSION["ID"] = $usuario_db["ID_USUARIO"];
+                $_SESSION["NOMBRE"] = $usuario_db["NOMBRE"];
+                $_SESSION["PERFIL"] = $usuario_db["PERFIL"];
+                return true;
+            }
+            return false;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
-    return false;
-}
+
+    // public function login($usuario, $password) {
+    // $sql = "SELECT * FROM tb_administradores WHERE USUARIO = ? AND ESTADO = 'Activo'";
+    // $stmt = $this->db->prepare($sql);
+    // $stmt->execute([$usuario]);
+    // $result = $stmt->fetch();
+
+    // if ($result && password_verify($password, $result["PASSWORD"])) {
+    //     $_SESSION["ID"] = $result["ID_USUARIO"];
+    //     $_SESSION["NOMBRE"] = $result["NOMBRE"];
+    //     $_SESSION["PERFIL"] = $result["PERFIL"];
+    //     return true;
+    // }
+    // return false; ESTA ES LA VERSION ANTERIOR
 
     public function add($nombre, $apellido, $usuario, $password) {
         $sql = "INSERT INTO tb_administradores (NOMBRE, APELLIDO, USUARIO, PASSWORD) VALUES (?, ?, ?, ?)";
