@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2025 a las 23:21:24
+-- Tiempo de generación: 31-07-2025 a las 06:23:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_mig_unificada`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertar_movimiento` (IN `p_producto_id` INT, IN `p_tipo` ENUM('entrada','salida'), IN `p_cantidad` INT, IN `p_observaciones` TEXT)   BEGIN
+  -- Insertar el movimiento
+  INSERT INTO inventario_movimientos (producto_id, tipo, cantidad, observaciones)
+  VALUES (p_producto_id, p_tipo, p_cantidad, p_observaciones);
+
+  -- Actualizar el stock del producto
+  IF p_tipo = 'entrada' THEN
+    UPDATE productos SET stock = stock + p_cantidad WHERE id = p_producto_id;
+  ELSE
+    UPDATE productos SET stock = stock - p_cantidad WHERE id = p_producto_id;
+  END IF;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -43,6 +62,20 @@ CREATE TABLE `inventario_movimientos` (
 INSERT INTO `inventario_movimientos` (`id`, `producto_id`, `tipo`, `cantidad`, `fecha`, `observaciones`) VALUES
 (1, 1, 'entrada', 34, '2025-07-18 16:01:39', 'Stock inicial'),
 (2, 1, 'salida', 8, '2025-07-18 16:01:52', 'papas fritas');
+
+--
+-- Disparadores `inventario_movimientos`
+--
+DELIMITER $$
+CREATE TRIGGER `trg_actualizar_stock` AFTER INSERT ON `inventario_movimientos` FOR EACH ROW BEGIN
+  IF NEW.tipo = 'entrada' THEN
+    UPDATE productos SET stock = stock + NEW.cantidad WHERE id = NEW.producto_id;
+  ELSE
+    UPDATE productos SET stock = stock - NEW.cantidad WHERE id = NEW.producto_id;
+  END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -235,6 +268,13 @@ CREATE TABLE `reservas` (
   `Estado` enum('Pendiente','Activa','Finalizada') NOT NULL DEFAULT 'Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `nombre`, `fecha`, `hora`, `personas`, `mesa_id`, `Estado`) VALUES
+(3, 'Arley', '2025-07-08', '00:32:00', 4, 7, 'Pendiente');
+
 -- --------------------------------------------------------
 
 --
@@ -292,6 +332,52 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `usuario`, `clave`) VALUES
 (23, 'cliente23', 'clave_encriptada'),
 (24, 'mesero1', '$2y$10$Og4uP5zu0797f14xl0GSbexjyCPH0c1nnkZxOkGy153gpSZs/dJvS');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_movimientos_inventario`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_movimientos_inventario` (
+`id` int(11)
+,`producto` varchar(100)
+,`tipo` enum('entrada','salida')
+,`cantidad` int(11)
+,`fecha` datetime
+,`observaciones` text
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_pedidos_detallados`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_pedidos_detallados` (
+`PedidoID` int(11)
+,`Cliente` varchar(100)
+,`NumeroMesa` int(11)
+,`FechaHora` datetime
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_movimientos_inventario`
+--
+DROP TABLE IF EXISTS `vista_movimientos_inventario`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_movimientos_inventario`  AS SELECT `m`.`id` AS `id`, `p`.`nombre` AS `producto`, `m`.`tipo` AS `tipo`, `m`.`cantidad` AS `cantidad`, `m`.`fecha` AS `fecha`, `m`.`observaciones` AS `observaciones` FROM (`inventario_movimientos` `m` join `productos` `p` on(`m`.`producto_id` = `p`.`id`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_pedidos_detallados`
+--
+DROP TABLE IF EXISTS `vista_pedidos_detallados`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_pedidos_detallados`  AS SELECT `p`.`PedidoID` AS `PedidoID`, `p`.`Cliente` AS `Cliente`, `m`.`Numero` AS `NumeroMesa`, `p`.`FechaHora` AS `FechaHora` FROM (`pedidos` `p` join `mesas` `m` on(`p`.`Mesa` = `m`.`MesaID`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -415,7 +501,7 @@ ALTER TABLE `pedidosdomicilio`
 -- AUTO_INCREMENT de la tabla `platos`
 --
 ALTER TABLE `platos`
-  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -433,7 +519,7 @@ ALTER TABLE `recuperacioncontraseña`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -493,6 +579,14 @@ ALTER TABLE `reservas`
 --
 ALTER TABLE `tb_inventario`
   ADD CONSTRAINT `fk_inventario_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `limpiar_notificaciones` ON SCHEDULE EVERY 30 DAY STARTS '2025-07-30 23:18:36' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM notificaciones WHERE Fecha < NOW() - INTERVAL 30 DAY$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
