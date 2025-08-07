@@ -203,51 +203,51 @@
     <br>
     <br>
 
-    <!-- Sobre Nosotros -->
-<div class="accordion" id="accordionSobreNosotros">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Sobre Nosotros
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionSobreNosotros">
-      <div class="accordion-body">
-        Somos estudiantes del SENA del Centro de Diseño y Metrología, desarrollando este proyecto POS para restaurantes como parte de nuestro trabajo de grado...
+      <!-- Sobre Nosotros -->
+  <div class="accordion" id="accordionSobreNosotros">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Sobre Nosotros
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionSobreNosotros">
+        <div class="accordion-body">
+          Somos estudiantes del SENA del Centro de Diseño y Metrología, desarrollando este proyecto POS para restaurantes como parte de nuestro trabajo de grado...
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Nuestra Historia
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSobreNosotros">
-      <div class="accordion-body">
-        El proyecto nació de la inquietud por optimizar el servicio en los restaurantes, combinando nuestros conocimientos...
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Nuestra Historia
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionSobreNosotros">
+        <div class="accordion-body">
+          El proyecto nació de la inquietud por optimizar el servicio en los restaurantes, combinando nuestros conocimientos...
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Misión y Visión
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSobreNosotros">
-      <div class="accordion-body">
-        <h5>Misión</h5>
-        Ofrecer un sistema POS innovador...
-        <h5>Visión</h5>
-        Convertirnos en referentes en soluciones tecnológicas...
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Misión y Visión
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionSobreNosotros">
+        <div class="accordion-body">
+          <h5>Misión</h5>
+          Ofrecer un sistema POS innovador...
+          <h5>Visión</h5>
+          Convertirnos en referentes en soluciones tecnológicas...
+        </div>
       </div>
     </div>
   </div>
-</div>
-<br>
+  <br>
 
 
 <section id="nuestro-equipo" class="container mt-5">
