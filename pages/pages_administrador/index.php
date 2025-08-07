@@ -37,7 +37,10 @@ $Modelo = new Administradores();
 
 </div>
 
-<h1 style="margin-top: 30px;">Administradores</h1>
+<div id="tituloAdmin">
+    <h1>Administradores</h1>
+</div>
+
 
 <table border="1" style="width: 60%; margin: 20px auto 0 auto;">
     <tr>

@@ -284,4 +284,13 @@ footer {
     transform: scale(1.05);
 }
 
+#tituloAdmin {
+    text-align: center;
+    margin-top: 30px;
+}
 
+#tituloAdmin h1 {
+    color: #4b2c0a;
+    font-size: 24px;
+    font-weight: bold;
+}
