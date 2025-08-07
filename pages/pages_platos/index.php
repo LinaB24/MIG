@@ -1,4 +1,7 @@
-<?php include __DIR__ . '/../pages_layout/head.php'; ?>
+<?php 
+include __DIR__ . '/../../pages/pages_layout/menu_admin.php';
+include __DIR__ . '/../pages_layout/head.php';
+ ?>
 <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
 <div class="container mt-5">
     <h2>Platos</h2>

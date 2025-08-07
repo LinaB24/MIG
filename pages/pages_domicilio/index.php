@@ -1,6 +1,8 @@
 <?php
 require_once '../../modelos/modelo_domicilio/Domicilio.php';
+
 include '../pages_layout/head.php';
+include __DIR__ . '/../../pages/pages_layout/menu_admin.php';
 
 $domicilio = new Domicilio();
 $pedidos = $domicilio->obtenerTodos();

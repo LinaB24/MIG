@@ -1,5 +1,6 @@
-<?php include 'header.php'; ?>
-
+<?php include 'header.php'; 
+include __DIR__ . '/../../pages/pages_layout/menu_admin.php';
+?>
 <div class="container mt-5">
     <h2 class="mb-4">Listado de Reservas</h2>
 

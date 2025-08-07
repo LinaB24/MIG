@@ -16,7 +16,6 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Reservas</title>
@@ -24,31 +23,40 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../css/estilosReservas.css">
 </head>
 
-
 <body class="bg-light">
 
-    <div class="container mt-5">
+<div class="d-flex">
+    <!-- Menú lateral -->
+    <div class="bg-dark text-white p-3" style="width: 220px; min-height: 100vh;">
+        <?php include __DIR__ . '/../../pages/pages_layout/menu_admin.php'; ?>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container mt-5 flex-grow-1">
+
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Reservas del Restaurante</h2>
-            <form action="../pages_administrador/index.php" method="POST">
-            <button class="btn btn-secondary" type="submit">Volver al inicio</button>
-            </form>
-            <form action="dashboard.php" method="POST">
-            <button class="btn btn-secondary" type="submit">Dashboard</button>
-            </form>
-
-            <?php if (isset($_SESSION['error'])): ?>
-                <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
-                <?php unset($_SESSION['error']); ?>
-            <?php endif; ?>
-
-            <?php if (isset($_SESSION['exito'])): ?>
-                <div class="alert alert-success"><?= $_SESSION['exito'] ?></div>
-                <?php unset($_SESSION['exito']); ?>
-            <?php endif; ?>
-
+            <div class="d-flex gap-2">
+                <form action="../pages_administrador/index.php" method="POST">
+                    <button class="btn btn-secondary" type="submit">Volver al inicio</button>
+                </form>
+                <form action="dashboard.php" method="POST">
+                    <button class="btn btn-secondary" type="submit">Dashboard</button>
+                </form>
+            </div>
         </div>
 
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['exito'])): ?>
+            <div class="alert alert-success"><?= $_SESSION['exito'] ?></div>
+            <?php unset($_SESSION['exito']); ?>
+        <?php endif; ?>
+
+        <!-- Formulario de reservas -->
         <form action="../../controladores/controlador_reservas/ReservaController.php?accion=guardar" method="POST" class="card p-4 shadow-sm mb-4 needs-validation" novalidate>
             <div class="row">
                 <div class="col-md-3 mb-3">
@@ -87,7 +95,7 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button type="submit" class="btn btn-success">Agregar Reserva</button>
         </form>
 
-
+        <!-- Tabla de reservas -->
         <div class="card shadow-sm p-3">
             <h5 class="mb-3">Listado de Reservas</h5>
             <table class="table table-bordered table-hover">
@@ -116,23 +124,25 @@ $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
         </div>
-    </div>
 
-    <script>
-        (() => {
-            'use strict';
-            const forms = document.querySelectorAll('.needs-validation');
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        })();
-    </script>
+    </div> <!-- Fin contenido principal -->
+</div> <!-- Fin d-flex -->
+
+<script>
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
 
 <?php include '../pages_layout/footer.php'; ?>
 </body>

@@ -35,7 +35,7 @@
         </div>
 
         <!-- Botones -->
-        <div class="nav-buttons d-flex">
+        <!-- <div class="nav-buttons d-flex">
              <div> <a href="../pages_administrador/index.php" class="custom-btn">Inicio</a> </div>
             <div> <a href="add.php" class="custom-btn">Registrar Administrador</a> </div>
             <div> <a href="../pages_existencias/index.php" class="custom-btn">Existencias</a> </div>
@@ -45,5 +45,5 @@
             <div> <a href="../pages_domicilio/index.php" class="custom-btn">Domicilios</a> </div>
             <div> <a href="../../controladores/controlador_usuario/Salir.php" class="custom-btn logout">Cerrar sesión</a> </div>
         </div>
-    </div>
+    </div> -->
 </header>

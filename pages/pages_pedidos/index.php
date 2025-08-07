@@ -1,17 +1,18 @@
 <?php
 $titulo = "Nuevo Pedido";
 
-
-// Incluye la clase de conexión y obtén el objeto PDO
 require_once __DIR__ . '/../../Conexion.php';
+include __DIR__ . '/../../pages/pages_layout/menu_admin.php';
 include __DIR__ . '/../pages_layout/head.php';
 
 $conn = Conexion::getInstancia()->getConexion();
 ?>
 <link rel="stylesheet" href="../../css/estilosIndexAdmin.css">
+
+<!-- CONTENEDOR PARA MOVER A LA DERECHA -->
+<div class="contenido-ajustado">
+
 <h2 class="mb-4">Nuevo Pedido</h2>
-<h4>
-</h4>
 
 <form action="../../controladores/controlador_pedidos/pedidosControllers.php?accion=guardar" method="POST">
 
@@ -56,6 +57,8 @@ $conn = Conexion::getInstancia()->getConexion();
     </div>
 
 </form>
+
+</div> <!-- Cierre del contenido-ajustado -->
 
 <script>
     document.querySelectorAll('input[type="checkbox"][name="platos[]"]').forEach(cb => {

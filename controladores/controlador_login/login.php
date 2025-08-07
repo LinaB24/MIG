@@ -1,8 +1,6 @@
 <?php
-
 require_once __DIR__ . '/../../Conexion.php';
 session_start();
-
 $accion = $_GET['accion'] ?? '';
 
 if ($accion === 'login') {
@@ -21,7 +19,7 @@ if ($accion === 'login') {
 
     if ($user && password_verify($password, $user['PASSWORD'])) {
         $_SESSION['usuario'] = $user['USUARIO'];
-        header("Location: ../../pages/pages_administrador/index.php");
+        header("Location: ../../pages/pages_inicio/inicio.php"); 
         exit;
     } else {
         header("Location: ../../pages/pages_login/login.php?error=Usuario o contraseña incorrectos");

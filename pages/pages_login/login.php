@@ -57,7 +57,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
             alert('El usuario debe tener al menos 3 caracteres.');
             return false;
         }
-        if (pass.length < 4) { // Cambiado a 5 para coincidir con el mensaje de error
+        if (pass.length < 4) { 
             alert('La contraseña debe tener al menos 5 caracteres.');
             return false;
         }

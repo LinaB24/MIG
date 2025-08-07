@@ -213,3 +213,8 @@ h2 {
     width: 100% !important;
     flex-grow: 1;
 }
+/* Ajusta el contenido principal para dejar espacio al menú lateral */
+.contenido-ajustado {
+    margin-left: 250px; /* o el ancho real de tu menú */
+    transition: margin-left 0.3s ease;
+}
