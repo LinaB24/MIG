@@ -63,7 +63,7 @@
         </form>
 
         <!-- Botón separado -->
-        <a class="nav-link" href="pages/pages_login/login.php">Iniciar Sesion</a>
+        <a class="nav-link" href="pages/pages_login/login.php">Iniciar Sesión</a>
 
       </div>
 
@@ -85,7 +85,7 @@
         <img src="assets/mig1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Bienvenidos a GRUPO MIG</h5>
-          <p>Proveemos soluciones tecnológicas innovadoras.</p>
+          <p>Ofrecemos soluciones tecnológicas innovadoras.</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -123,7 +123,7 @@
         <div class="card h-100 shadow-sm servicio-card">
           <div class="card-body">
             <h5 class="card-title">Gestión de Productos y Menú</h5>
-            <p class="card-text">Administra fácilmente los platos, bebidas o productos del restaurante...</p>
+            <p class="card-text">Administra fácilmente los platos, bebidas o productos del restaurante.</p>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
         <div class="card h-100 shadow-sm servicio-card">
           <div class="card-body">
             <h5 class="card-title">Control de existencias</h5>
-            <p class="card-text">Lleva un control preciso de las existencias en tu stock...</p>
+            <p class="card-text">Lleva un control preciso de las existencias en tu stock.</p>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
         <div class="card h-100 shadow-sm servicio-card">
           <div class="card-body">
             <h5 class="card-title">Registro de las ventas</h5>
-            <p class="card-text">Gestiona tus pedidos y ventas...</p>
+            <p class="card-text">Gestiona tus pedidos y ventas.</p>
           </div>
         </div>
       </div>
@@ -173,8 +173,7 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            Ayudamos a las empresas a mejorar sus procesos a través de la automatización y optimización de recursos.
-          </div>
+          Nuestro objetivo es apoyar a pequeños y medianos restaurantes en la modernización de su gestión, implementando soluciones tecnológicas que automatizan procesos clave, optimizan recursos y contribuyen al crecimiento sostenible de sus negocios.          </div>
         </div>
       </div>
     </div>
@@ -212,8 +211,7 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionSobreNosotros">
         <div class="accordion-body">
-          Somos estudiantes del SENA del Centro de Diseño y Metrología, desarrollando este proyecto POS para restaurantes como parte de nuestro trabajo de grado...
-        </div>
+        Somos estudiantes del SENA, Centro de Diseño y Metrología, y estamos desarrollando un sistema innovador para restaurantes, orientado a optimizar la gestión de procesos, mejorar la eficiencia operativa y ofrecer soluciones tecnológicas de valor. Este proyecto forma parte de nuestro trabajo de grado y refleja nuestro compromiso con la excelencia y la innovación.          </div>
       </div>
     </div>
 
