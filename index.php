@@ -82,21 +82,21 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/imagen1.jpg" class="d-block w-100" alt="...">
+        <img src="assets/mig1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Bienvenidos a GRUPO MIG</h5>
           <p>Proveemos soluciones tecnológicas innovadoras.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/imagen2.jpg" class="d-block w-100" alt="...">
+        <img src="assets/mig2.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Transforma tu negocio</h5>
           <p>Con nuestras herramientas tecnológicas de vanguardia.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/imagen3.jpg" class="d-block w-100" alt="...">
+        <img src="assets/mig3.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Tu socio estratégico</h5>
           <p>En el camino hacia el éxito.</p>
@@ -258,7 +258,7 @@
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/dayis.jpeg" alt="Dayana Lopez">
+      <img src="assets/dayana.jpg" alt="Dayana Lopez">
       <h3>Dayana Lopez</h3>
       <p>Desarrollador</p>
     </div>
@@ -268,7 +268,7 @@
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/lina.jpeg" alt="Lina Bohorquez">
+      <img src="assets/lina.jpg" alt="Lina Bohorquez">
       <h3>Lina Bohorquez</h3>
       <p>Desarrollador</p>
     </div>

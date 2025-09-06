@@ -76,6 +76,14 @@ body {
   border-radius: 0.3rem;
 }
 
+/*Nuevo bloque para limitar el ancho del carrusel */
+.carousel {
+  max-width: 900px;  /* angosto */
+  margin: 0 auto;    /* centrar en la pantalla */
+}
+
+
+
 /* Sección de Servicios */
 .card {
   border: none;
