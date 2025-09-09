@@ -29,6 +29,12 @@ $movimientos = $modelo->obtenerMovimientos();
 <body>
 <?php include '../pages_layout/head.php'; ?>
 
+<?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'importacion_exitosa'): ?>
+    <div class="alert alert-success" role="alert">
+        ¡Importación exitosa! Se importaron <?php echo $_GET['cantidad']; ?> productos.
+    </div>
+<?php endif; ?>
+
 <!-- CONTENEDOR GENERAL AJUSTADO -->
 <div class="contenido-ajustado">
     <!-- CONTENEDOR PRINCIPAL -->
@@ -54,6 +60,7 @@ $movimientos = $modelo->obtenerMovimientos();
                             <th>ID</th>
                             <th>Producto</th>
                             <th>Stock</th>
+                            <th>Unidad de Medida</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -63,6 +70,7 @@ $movimientos = $modelo->obtenerMovimientos();
                                 <td><?= $p['id'] ?></td>
                                 <td><?= $p['nombre'] ?></td>
                                 <td><?= $p['stock'] ?></td>
+                                <td><?= $p['unidad_base'] ?></td>
                                 <td class="text-center">
                                     <form method="POST" action="../../controladores/controlador_existencias/InventarioController.php" onsubmit="return confirm('¿Seguro que desea eliminar este producto?');" style="display:inline;">
                                         <input type="hidden" name="eliminar_producto" value="1">

@@ -45,7 +45,7 @@ class InventarioModel {
 
     public function obtenerInventario() {
         $stmt = $this->db->query("
-            SELECT p.id, p.nombre, p.descripcion, p.stock, p.codigo
+            SELECT p.id, p.nombre, p.descripcion, p.stock, p.codigo, p.unidad_base
             FROM productos p
             ORDER BY p.nombre
         ");
@@ -66,11 +66,7 @@ class InventarioModel {
         return (int) $stmt->fetchColumn();
     }
 
-    public function registrarProducto($codigo, $nombre, $descripcion, $stock) {
-        if (empty($codigo)) {
-            throw new Exception("❌ El código del producto es requerido.");
-        }
-        
+    public function registrarProducto($nombre, $descripcion, $stock) {
         if (empty($nombre)) {
             throw new Exception("❌ El nombre del producto es requerido.");
         }
@@ -79,15 +75,9 @@ class InventarioModel {
             throw new Exception("❌ El stock inicial no puede ser negativo.");
         }
 
-        $stmt = $this->db->prepare("SELECT COUNT(*) FROM productos WHERE codigo = ?");
-        $stmt->execute([$codigo]);
-        if ($stmt->fetchColumn() > 0) {
-            throw new Exception("❌ Ya existe un producto con este código.");
-        }
-
         $stmt = $this->db->prepare("INSERT INTO productos 
-            (codigo, nombre, descripcion, stock) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$codigo, $nombre, $descripcion, $stock]);
+            (nombre, descripcion, stock, unidad_base) VALUES (?, ?, ?, 'kg')");
+        $stmt->execute([$nombre, $descripcion, $stock]);
     }
 
     public function eliminarProducto($producto_id) {

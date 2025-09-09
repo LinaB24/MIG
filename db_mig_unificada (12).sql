@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2025 a las 06:41:39
+-- Tiempo de generación: 08-09-2025 a las 04:27:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -229,7 +229,7 @@ CREATE TABLE `platos_productos` (
   `PlatoID` int(11) DEFAULT NULL,
   `ProductoID` int(11) DEFAULT NULL,
   `cantidad` decimal(10,2) DEFAULT NULL,
-  `unidad_medida` varchar(20) DEFAULT NULL
+  `unidad_medida` varchar(20) NOT NULL DEFAULT 'kg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -237,8 +237,8 @@ CREATE TABLE `platos_productos` (
 --
 
 INSERT INTO `platos_productos` (`id`, `PlatoID`, `ProductoID`, `cantidad`, `unidad_medida`) VALUES
-(1, 23, 5, 10.00, 'unidad'),
-(2, 23, 6, 20.00, 'unidad');
+(1, 23, 5, 10.00, 'kg'),
+(2, 23, 6, 20.00, 'kg');
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,7 @@ CREATE TABLE `productos` (
   `codigo` varchar(50) DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
-  `unidad_base` varchar(20) DEFAULT NULL,
+  `unidad_base` varchar(20) NOT NULL DEFAULT 'kg',
   `stock` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -260,11 +260,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `descripcion`, `unidad_base`, `stock`) VALUES
-(3, '3', 'Cilantro', 'por gajos', 'unidad', 40),
-(5, '4', 'arroz', 'por libra', 'lb', 774),
-(6, '6', 'pollo', 'libra', 'lb', 600),
-(7, '7', 'cebolla', 'dh', NULL, 400),
-(8, '8', 'cebolla morada', 'sdfs', NULL, 400);
+(3, '3', 'Cilantro', 'por gajos', 'kg', 40),
+(5, '4', 'arroz', 'por libra', 'kg', 341),
+(6, '6', 'pollo', 'libra', 'kg', 272),
+(7, '7', 'cebolla', 'dh', 'kg', 400),
+(8, '8', 'cebolla morada', 'sdfs', 'kg', 400);
 
 -- --------------------------------------------------------
 
@@ -346,38 +346,6 @@ CREATE TABLE `tb_inventario` (
   `nombre_producto` varchar(100) NOT NULL,
   `existencias` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `unidades_medida`
---
-
-CREATE TABLE `unidades_medida` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `abreviatura` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `unidades_medida`
---
-
-INSERT INTO `unidades_medida` (`id`, `nombre`, `abreviatura`) VALUES
-(1, 'Kilogramo', 'kg'),
-(2, 'Gramo', 'g'),
-(3, 'Libra', 'lb'),
-(4, 'Onza', 'oz'),
-(5, 'Litro', 'L'),
-(6, 'Mililitro', 'ml'),
-(7, 'Galón', 'gal'),
-(8, 'Taza', 'tz'),
-(9, 'Unidad', 'un'),
-(10, 'Docena', 'doc'),
-(11, 'Porción', 'porc'),
-(12, 'Cucharada', 'cda'),
-(13, 'Cucharadita', 'cdta'),
-(14, 'Pizca', 'pzc');
 
 -- --------------------------------------------------------
 
@@ -539,12 +507,6 @@ ALTER TABLE `tb_inventario`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indices de la tabla `unidades_medida`
---
-ALTER TABLE `unidades_medida`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -576,13 +538,13 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `platos`
 --
 ALTER TABLE `platos`
-  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `PlatoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `platos_productos`
 --
 ALTER TABLE `platos_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -607,12 +569,6 @@ ALTER TABLE `reservas`
 --
 ALTER TABLE `tb_administradores`
   MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT de la tabla `unidades_medida`
---
-ALTER TABLE `unidades_medida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

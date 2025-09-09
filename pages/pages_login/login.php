@@ -47,6 +47,8 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
             <button type="submit">Iniciar Sesión</button>
         </form>
         <p><a href="../pages_reservas/recuperar.php">¿Olvidaste tu contraseña?</a></p>
+        <p><a href="../../index.php">Volver al home</a></p>
+
     </div>
     <script>
     document.getElementById('loginForm').onsubmit = function() {
