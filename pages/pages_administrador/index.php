@@ -111,7 +111,6 @@ $valoresPlatos = array_column($platosVendidosHoy, 'total_vendidos');
 
 
 
-<?php include '../pages_layout/footer.php'; ?>
 
 <script>
   // Pie Chart - Mesas
@@ -151,6 +150,8 @@ $valoresPlatos = array_column($platosVendidosHoy, 'total_vendidos');
     }
   });
 </script>
+<?php include '../pages_layout/footer.php'; ?>
 
 </body>
+
 </html>
