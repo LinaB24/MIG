@@ -2,7 +2,7 @@ Restaurante MIG
 
 Sistema de Gestión Integral para Restaurantes
 
-Restaurante MIG es una aplicación web desarrollada como solución tecnológica para pequeños y medianos restaurantes. Su objetivo es optimizar los procesos internos mediante la automatización de pedidos, reservas, control de inventario y generación de reportes.
+MIG es una aplicación web desarrollada como solución tecnológica para pequeños y medianos restaurantes. Su objetivo es optimizar los procesos internos mediante la automatización de pedidos, reservas, control de inventario y generación de reportes.
 
 Características principales
 
@@ -20,7 +20,7 @@ Reportes: generación de estadísticas para la toma de decisiones.
 
 Autenticación Segura: login de administradores y usuarios con validaciones.
 
-🛠️ Tecnologías utilizadas
+Tecnologías utilizadas
 
 Backend: PHP
 
