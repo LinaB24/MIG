@@ -2,8 +2,29 @@
 require_once("../../controladores/controlador_usuario/validar_sesion.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYP                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').onsubmit = function() {
+            const usuario = document.getElementById('usuario').value;
+            
+            if (usuario.includes(' ')) {
+                alert('El nombre de usuario no puede contener espacios.');
+                return false;
+            }
+            
+            if (usuario.length < 3) {
+                alert('El usuario debe tener al menos 3 caracteres.');
+                return false;
+            }
+            
+            return true;
+        }
+    </script><html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Registrar Usuario</title>
@@ -35,7 +56,9 @@ require_once("../../controladores/controlador_usuario/validar_sesion.php");
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="Apellido" required>
                 <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="Usuario" required>
+                <input type="text" id="usuario" name="Usuario" required 
+                       pattern="[A-Za-z0-9_-]{3,}" 
+                       title="El usuario debe tener al menos 3 caracteres y no puede contener espacios">
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="Password" required>
                 

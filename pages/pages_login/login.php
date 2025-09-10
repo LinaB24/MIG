@@ -40,7 +40,7 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
         <form action="../../controladores/controlador_usuario/login.php" method="POST" id="loginForm" autocomplete="off">
             <label for="usuario">Usuario:</label>
             <input type="text" id="usuario" name="usuario" required placeholder="Ingresa tu usuario" 
-                   pattern=".{3,}" title="Mínimo 3 caracteres" maxlength="50"><br>
+                   pattern="[A-Za-z0-9_-]{3,}" title="El usuario debe tener al menos 3 caracteres y no puede contener espacios" maxlength="50"><br>
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña"
                    pattern=".{4,}" title="Mínimo 4 caracteres" maxlength="100"><br>
@@ -52,8 +52,13 @@ header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
     </div>
     <script>
     document.getElementById('loginForm').onsubmit = function() {
-        const usuario = document.getElementById('usuario').value.trim();
+        const usuario = document.getElementById('usuario').value;
         const pass = document.getElementById('password').value.trim();
+        
+        if (usuario.includes(' ')) {
+            alert('El nombre de usuario no puede contener espacios.');
+            return false;
+        }
         
         if (usuario.length < 3) {
             alert('El usuario debe tener al menos 3 caracteres.');

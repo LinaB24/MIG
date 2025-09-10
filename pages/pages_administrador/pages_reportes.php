@@ -64,10 +64,6 @@ $ventas = $conn->query("SELECT * FROM vista_ventas_detalladas ORDER BY PedidoID 
                 <?php endwhile; ?>
             </tbody>
         </table>
-
-        <div class="mt-4 text-center">
-            <a href="../pages_administrador/index.php" class="btn-registro"> Volver al Panel</a>
-        </div>
     </div>
 </div>
 

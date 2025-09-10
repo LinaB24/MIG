@@ -75,3 +75,6 @@ footer {
     font-size: 12px;
     color: #360404;
 }
+* {
+  font-family: "Lora", sans-serif !important;
+}

@@ -9,6 +9,12 @@ if (session_status() === PHP_SESSION_NONE) {
 if ($_POST) {
     $usuario = $_POST["usuario"] ?? '';
     $password = $_POST["password"] ?? '';
+    
+    // Validar que el usuario no contenga espacios
+    if (strpos($usuario, ' ') !== false) {
+        header("Location: ../../pages/pages_login/login.php?error=El nombre de usuario no puede contener espacios");
+        exit();
+    }
 
     $Modelo = new Administradores();
     $resultado = $Modelo->login($usuario, $password);
