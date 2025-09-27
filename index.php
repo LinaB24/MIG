@@ -263,7 +263,7 @@
       <p>Desarrollador</p>
     </div>
     <div class="equipo-card">
-      <img src="assets/perfiles2.jpg" alt="Diego Gutierrez">
+      <img src="assets/diego.jpg" alt="Diego Gutierrez">
       <h3>Diego Gutierrez</h3>
       <p>Desarrollador</p>
     </div>

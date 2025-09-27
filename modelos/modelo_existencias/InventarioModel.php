@@ -17,21 +17,21 @@ class InventarioModel {
     
     public function registrarMovimiento($producto_id, $tipo, $cantidad, $observaciones) {
         if (!$this->productoExiste($producto_id)) {
-            throw new Exception("❌ El producto con ID $producto_id no existe en la base de datos.");
+            throw new Exception(" El producto con ID $producto_id no existe en la base de datos.");
         }
 
         if ($tipo !== 'entrada' && $tipo !== 'salida') {
-            throw new Exception("❌ Tipo de movimiento inválido.");
+            throw new Exception(" Tipo de movimiento inválido.");
         }
 
         if ($cantidad <= 0) {
-            throw new Exception("❌ La cantidad debe ser mayor a 0.");
+            throw new Exception(" La cantidad debe ser mayor a 0.");
         }
 
         if ($tipo === 'salida') {
             $stock_actual = $this->obtenerStockProducto($producto_id);
             if ($cantidad > $stock_actual) {
-                throw new Exception("❌ No hay suficiente stock para realizar la salida.");
+                throw new Exception(" No hay suficiente stock para realizar la salida.");
             }
         }
 
@@ -40,8 +40,7 @@ class InventarioModel {
         $stmt->execute([$producto_id, $tipo, $cantidad, $observaciones]);
     }
 
-    // 🚫 Eliminamos obtenerUnidadesMedida porque ya no hay tabla
-    // public function obtenerUnidadesMedida() { ... }
+
 
     public function obtenerInventario() {
         $stmt = $this->db->query("
@@ -54,9 +53,9 @@ class InventarioModel {
 
     public function obtenerMovimientos() {
         $stmt = $this->db->query("SELECT m.*, p.nombre 
-                                  FROM inventario_movimientos m 
-                                  JOIN productos p ON m.producto_id = p.id 
-                                  ORDER BY m.fecha DESC");
+                                FROM inventario_movimientos m 
+                                JOIN productos p ON m.producto_id = p.id 
+                                ORDER BY m.fecha DESC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -68,21 +67,25 @@ class InventarioModel {
 
     public function registrarProducto($nombre, $descripcion, $stock) {
         if (empty($nombre)) {
-            throw new Exception("❌ El nombre del producto es requerido.");
+            throw new Exception(" El nombre del producto es requerido.");
         }
         
         if ($stock < 0) {
-            throw new Exception("❌ El stock inicial no puede ser negativo.");
+            throw new Exception(" El stock inicial no puede ser negativo.");
         }
 
-        $stmt = $this->db->prepare("INSERT INTO productos 
-            (nombre, descripcion, stock, unidad_base) VALUES (?, ?, ?, 'kg')");
-        $stmt->execute([$nombre, $descripcion, $stock]);
+        
+        $stmt = $this->db->prepare("CALL sp_insertar_movimiento(?, ?, ?, ?)");
+        $stmt->execute([$producto_id, $tipo, $cantidad, $observaciones]);
+
+        // $stmt = $this->db->prepare("INSERT INTO productos 
+        //     (nombre, descripcion, stock, unidad_base) VALUES (?, ?, ?, 'kg')");
+        // $stmt->execute([$nombre, $descripcion, $stock]);
     }
 
     public function eliminarProducto($producto_id) {
         if (!$this->productoExiste($producto_id)) {
-            throw new Exception("❌ El producto no existe.");
+            throw new Exception("El producto no existe.");
         }
         $stmt = $this->db->prepare("DELETE FROM inventario_movimientos WHERE producto_id = ?");
         $stmt->execute([$producto_id]);
@@ -91,5 +94,5 @@ class InventarioModel {
         $stmt->execute([$producto_id]);
     }
 
-    // 🚫 Eliminamos conversión de unidades y verificación de stock con unidad
+
 }
