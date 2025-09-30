@@ -33,3 +33,6 @@ Control de versiones: Git + GitHub
 Objetivo
 
 Ofrecer a los restaurantes una herramienta práctica, accesible y escalable que les permita optimizar recursos, mejorar la atención al cliente y tener mayor control sobre sus operaciones.
+
+
+link para la documentacion : https://docs.google.com/document/d/1J7RCIbuiKNIBxBafm8J6lX2nXqEC5qXw/edit?usp=drive_link&ouid=117003335721678675380&rtpof=true&sd=true
